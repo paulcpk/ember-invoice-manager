@@ -2,10 +2,10 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'ember-invoices',
+    modulePrefix: 'ember-invoice-manager',
     environment: environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: null,
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,6 +16,17 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    googleFonts: [
+      'Open+Sans:400,700',
+      'Montserrat:400,700'
+    ],
+
+    // Set or update content security policies
+    contentSecurityPolicy: {
+      'font-src': "'self' fonts.gstatic.com",
+      'style-src': "'self' fonts.googleapis.com"
     }
   };
 
@@ -29,6 +40,7 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -39,8 +51,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
   }
+
+
+
 
   return ENV;
 };

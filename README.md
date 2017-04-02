@@ -1,7 +1,6 @@
-# Ember-invoices
+# ember-invoice-manager
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+A simple invoice manager built with ember + electron. All data is saved locally on your machine via `ember-localstorage-adapter`.
 
 ## Prerequisites
 
