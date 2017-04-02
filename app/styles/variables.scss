@@ -1,14 +1,14 @@
 // Variables
 
 // Colors
-$primary: #318cdf;
-$info:    #00A4D9;
-$success: #44bd66;
-$warning: #fd9a35;
-$danger:  #ed6c63;
+$brand-primary: #318cdf;
+$brand-info:    #00A4D9;
+$brand-success: #44bd66;
+$brand-warning: #fd9a35;
+$brand-danger:  #ed6c63;
 
 $light-gray: #f0f4f6;
-$white-blue: #f7fdfe
+$white-blue: #f7fdfe;
 $white:      #ffffff;
 $gray:       #919ba5;
 $dark-gray:  #373b3e;
@@ -16,3 +16,5 @@ $black:      #252628;
 
 // Border radius
 $radius: 3px;
+
+$drop-shadow: 0 0 15px rgba(0,0,0,.1);

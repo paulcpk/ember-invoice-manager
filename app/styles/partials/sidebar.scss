@@ -1,5 +1,27 @@
 // sidebar styles
 
 .sidebar-container {
-  background-color: $white-blue; 
+  background-color: $white-blue;
+  display: flex;
+  width: 240px;
+  height: 100%;
+  flex: none;
+  flex-direction: column;
+  box-shadow: $drop-shadow;
+
+  .logo {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 24px;
+    line-height: 32px;
+    padding: 30px;
+  }
+
+  .btn-primary {
+    margin: 10px 30px;
+  }
+
+  .nav {
+    padding: 0 30px;
+  }
 }
