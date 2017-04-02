@@ -15,4 +15,10 @@ body {
 .main-container {
   display: flex;
   flex: auto;
+  padding: 15px 30px;
+}
+
+.route-headline {
+  border-bottom: 2px solid $gray-light;
+  padding-bottom: 10px;
 }
