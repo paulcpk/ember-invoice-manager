@@ -1,13 +1,14 @@
 // sidebar styles
 
 .sidebar-container {
-  background-color: $white-blue;
+  background-color: $black;
   display: flex;
   width: 240px;
   height: 100%;
   flex: none;
   flex-direction: column;
   box-shadow: $drop-shadow;
+  color: $white;
 
   .logo {
     font-family: 'Montserrat', sans-serif;
@@ -23,6 +24,14 @@
 
   .nav {
     padding: 0 30px;
+    
+    a {
+      color: $white;
+
+      &:hover {
+        
+      }
+    }
   }
 
   .footer {

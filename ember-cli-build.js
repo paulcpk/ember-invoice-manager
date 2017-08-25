@@ -1,13 +1,14 @@
-/*jshint node:true*/
-/* global require, module */
-var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+/* eslint-env node */
+'use strict';
+
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
-  var app = new EmberApp(defaults, {
-    'ember-bootstrap': {
-      'bootstrapVersion': 3,
-      'importBootstrapFont': true,
-      'importBootstrapCSS': false
+  let app = new EmberApp(defaults, {
+    // Add options here
+    'ember-cli-bootstrap-sassy': {
+      'glyphicons': false,
+      'quiet': true
     }
   });
 

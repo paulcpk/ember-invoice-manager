@@ -1,32 +1,26 @@
-/* jshint node: true */
+/* eslint-env node */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'ember-invoice-manager',
-    environment: environment,
-    rootURL: null,
-    locationType: 'hash',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-
-    googleFonts: [
-      'Open+Sans:400,700',
-      'Montserrat:400,700'
-    ],
-
-    // Set or update content security policies
-    contentSecurityPolicy: {
-      'font-src': "'self' fonts.gstatic.com",
-      'style-src': "'self' fonts.googleapis.com"
     }
   };
 
@@ -40,7 +34,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -51,10 +44,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+
   }
-
-
-
 
   return ENV;
 };
