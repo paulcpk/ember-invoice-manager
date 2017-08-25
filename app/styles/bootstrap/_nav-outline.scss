@@ -1,0 +1,20 @@
+// nav outline
+
+.nav-outline {
+    > li {
+        > a {
+            border: 2px solid;
+            border-color: $nav-outline-link-border;
+        }
+        
+        &  > a:hover,
+        &  > a:focus,
+        &.active > a,
+        &.active > a:focus,
+        &.active > a:hover {
+            color: $nav-outline-active-link-hover-border;
+            background-color: $nav-outline-active-link-hover-bg;
+            border-color: $nav-outline-active-link-hover-border;
+        }
+    }
+}
