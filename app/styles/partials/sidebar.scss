@@ -24,13 +24,14 @@
 
   .nav {
     padding: 0 30px;
+
+    & > li {
+      margin-top: 10px;
+    }
     
     a {
-      color: $white;
-
-      &:hover {
-        
-      }
+      color: $gray;
+      // transition: border-color .25s ease-in-out;
     }
   }
 
