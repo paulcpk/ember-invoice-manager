@@ -15,7 +15,7 @@ export default Model.extend({
     serviceFromDate: attr('date'),
     serviceToDate: attr('date'),
     paymentDueDate: attr('date'),
-    items: hasMany('item'),
+    items: hasMany('invoice-item'),
     tax: attr('number'),
     total: attr('number'),
     totalAfterTax: attr('number'),
