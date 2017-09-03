@@ -7,5 +7,6 @@ export default Model.extend({
     editedAt: attr('date'),
     amount: attr('number'),
     description: attr('number'),
+    
     invoice: belongsTo('invoice')
 });

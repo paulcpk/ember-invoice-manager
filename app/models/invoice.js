@@ -22,5 +22,6 @@ export default Model.extend({
     personalData: attr('string'),
     currency: attr('string'),
     isTemplate: attr('boolean'),
+    
     invoiceItems: hasMany('invoice-item')
 });
