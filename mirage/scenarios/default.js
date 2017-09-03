@@ -5,6 +5,13 @@ export default function(server) {
     This data will not be loaded in your tests.
   */
 
-  server.createList('invoice', 10);
-  server.createList('invoice-item', 20);
+  const NUMBER_OF_INVOICES = 30;
+
+  for (let i = NUMBER_OF_INVOICES; i--;) {
+    const randomNumber = Math.floor(Math.random() * 7);
+
+    let invoice = server.create('invoice');
+    server.createList('invoiceItem', randomNumber, { invoiceId: invoice.id });
+  }
+  
 }

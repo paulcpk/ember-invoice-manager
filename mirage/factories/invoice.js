@@ -1,9 +1,11 @@
-import { Factory, association, faker } from 'ember-cli-mirage';
+import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
     status: 'sent',
-    invoiceTitle: faker.lorem.words,
-    invoiceNumber: `${faker.lorem.number}-${faker.date.recent}`,
+    invoiceTitle: faker.lorem.word,
+    invoiceNumber(i) {
+        return i;
+    },
     senderLogo: faker.image.avatar,
     senderAddress: faker.address.streetAddress,
     recipientAddress: faker.address.streetAddress,

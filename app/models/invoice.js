@@ -15,12 +15,12 @@ export default Model.extend({
     serviceFromDate: attr('date'),
     serviceToDate: attr('date'),
     paymentDueDate: attr('date'),
-    items: hasMany('invoice-item'),
     tax: attr('number'),
     total: attr('number'),
     totalAfterTax: attr('number'),
     invoiceTerms: attr('string'),
     personalData: attr('string'),
     currency: attr('string'),
-    isTemplate: attr('boolean')
+    isTemplate: attr('boolean'),
+    invoiceItems: hasMany('invoice-item')
 });
