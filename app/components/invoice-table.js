@@ -1,32 +1,30 @@
 import Ember from 'ember';
-import TableCommon from 'ember-invoice-manager/mixins/table-common';
+
 const { computed, Component } = Ember;
 
-export default Component.extend(TableCommon, {
+export default Component.extend({
   columns: computed(function() {
     return [{
-      label: 'Avatar',
-      valuePath: 'avatar',
-      width: '60px',
-      sortable: false,
-      cellComponent: 'user-avatar'
+      title: 'Status',
+      propertyName: 'status',
     }, {
-      label: 'First Name',
-      valuePath: 'firstName',
-      width: '150px'
+      title: 'Customer',
+      propertyName: 'recipientAddress'
     }, {
-      label: 'Last Name',
-      valuePath: 'lastName',
-      width: '150px'
+      title: 'Issued',
+      propertyName: 'issuedDate'
     }, {
-      label: 'Address',
-      valuePath: 'address'
+      title: 'Due',
+      propertyName: 'paymentDueDate'
     }, {
-      label: 'State',
-      valuePath: 'state'
-    }, {
-      label: 'Country',
-      valuePath: 'country'
+      title: 'Total',
+      propertyName: 'total'
+    },{
+      title: 'Edit',
+      template: "components/ember-models-table/edit-button"
+    },{
+      title: 'Delete',
+      template: "components/ember-models-table/delete-button"
     }];
   })
 });
