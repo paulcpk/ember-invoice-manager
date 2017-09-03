@@ -1,6 +1,10 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 const { Model, attr, hasMany } = DS;
+const { computed } = Ember;
+
+
 
 export default Model.extend({
     status: attr('string'),
@@ -15,13 +19,21 @@ export default Model.extend({
     serviceFromDate: attr('date'),
     serviceToDate: attr('date'),
     paymentDueDate: attr('date'),
-    tax: attr('number'),
-    total: attr('number'),
-    totalAfterTax: attr('number'),
+    taxRate: attr('number'),
     invoiceTerms: attr('string'),
     personalData: attr('string'),
     currency: attr('string'),
     isTemplate: attr('boolean'),
     
-    invoiceItems: hasMany('invoice-item')
+    invoiceItems: hasMany('invoice-item'),
+    total: computed('invoiceItems', function() {
+        return this.get('invoiceItems').reduce((sum, item) => {
+            return sum + item.get('amount');
+        }, 0).toFixed(2);
+    }),
+    totalAfterTax: computed('total', function() {
+        const taxMultiplicator = this.get('taxRate') / 100 + 1;
+        const totalAfterTax = this.get('total') * taxMultiplicator;
+        return totalAfterTax.toFixed(2);
+    })
 });
