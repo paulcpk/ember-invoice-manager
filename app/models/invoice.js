@@ -24,10 +24,11 @@ export default Model.extend({
 	isTemplate: attr('boolean'),
 
 	invoiceItems: hasMany('invoice-item'),
+
 	total: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
 				return sum + item.get('amount');
-		}, 0).toFixed(2);
+		}, 0);
 	}),
 	totalAfterTax: computed('total', function() {
 		const taxMultiplicator = this.get('taxRate') / 100 + 1;
