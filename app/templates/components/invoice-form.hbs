@@ -1,0 +1,40 @@
+<form class="invoice-form col-xs-12">
+  <div class="row">
+    <div class="col-xs-5">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-gears"></i> Invoice Settings</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="invoiceTitle">Invoice Title</label>
+            {{input type="text" name='changeset.invoiceTitle' value=invoiceTitle size="100" class="form-control"}}
+          </div>
+          <div class="form-group">
+            <label for="invoiceNumber">Invoice Number</label>
+            {{input type="text" name='changeset.invoiceNumber' value=invoiceNumber size="100" class="form-control"}}
+          </div>
+          <div class="form-group">
+            <label for="senderLogo">Logo</label>
+            {{input type="file" name='changeset.senderLogo' value=senderLogo size="100" class="form-control"}}
+          </div>
+          <div class="form-group">
+            <label for="senderAddress">Sender Address</label>
+            {{textarea name='changeset.senderAddress' value=senderAddress cols='80' rows='3' class="form-control"}}
+          </div>
+          <div class="form-group">
+            <label for="recipientAddress">Recipient Address</label>
+            {{textarea name='changeset.recipientAddress' value=recipientAddress cols='80' rows='3' class="form-control"}}
+          </div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+          <div class="form-group"></div>
+        </div>
+      </div>
+      <div class="col-xs-6"></div>
+    </div>
+    </div>
+</form>

@@ -1,10 +1,14 @@
 import Ember from 'ember';
+const { Controller } = Ember;
 
-const { computed } = Ember;
-const { alias, readOnly } = computed;
+export default Controller.extend({
+  actions: {
+    submit(changeset) {
+      return changeset.save();
+    },
 
-export default Ember.Controller.extend({
-  title: computed('model', function() {
-    console.log(this.get('model'))
-  })
+    rollback(changeset) {
+      return changeset.rollback();
+    }
+  }
 });
