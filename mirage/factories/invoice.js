@@ -1,7 +1,7 @@
 import { Factory, faker } from 'ember-cli-mirage';
 
 export default Factory.extend({
-	status: 'sent',
+	status: faker.list.random('draft', 'sent', 'paid'),
 	invoiceTitle: faker.lorem.word,
 	invoiceNumber(i) {
 		return i;

@@ -13,7 +13,7 @@ module.exports = function(defaults) {
     },
 
     'ember-cli-string-helpers': {
-      only: ['truncate']
+      only: ['truncate', 'titleize']
     }
   });
 

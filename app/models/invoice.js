@@ -4,6 +4,17 @@ import DS from 'ember-data';
 const { Model, attr, hasMany } = DS;
 const { computed } = Ember;
 
+export function getStyleClassByStatus(status) {
+	const styles = {
+		'draft': 'default',
+		'sent': 'primary',
+		'paid': 'success',
+		'default': 'default'
+	};
+
+	return styles[status] ? styles[status] : styles['default'];
+}
+
 export default Model.extend({
 	status: attr('string'),
 	invoiceTitle: attr('string'),
@@ -25,6 +36,9 @@ export default Model.extend({
 
 	invoiceItems: hasMany('invoice-item'),
 
+	statusStyle: computed('status', function() {
+		return getStyleClassByStatus(this.get('status'));
+	}),
 	total: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
 				return sum + item.get('amount');
