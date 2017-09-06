@@ -4,6 +4,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.form-control {
+  // color: $black;
+}
+
 .app-container {
   background-color: $light-gray;
   position: fixed;
@@ -20,6 +24,7 @@ body {
 }
 
 .route-headline {
-  border-bottom: 2px solid $light-gray;
-  padding-bottom: 10px;
+  border-bottom: 2px solid $medium-light-gray;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
 }

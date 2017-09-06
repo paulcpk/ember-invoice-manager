@@ -33,7 +33,6 @@ export default Model.extend({
 	invoiceTerms: attr('string'),
 	personalData: attr('string'),
 	currency: attr('string'),
-	isTemplate: attr('boolean'),
 
 	invoiceItems: hasMany('invoice-item'),
 

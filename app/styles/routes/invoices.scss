@@ -5,10 +5,6 @@
 }
 
 .models-table-wrapper {
-  .form-control {
-    color: $black;
-  }
-
   .columns-dropdown {
     position: relative;
     z-index: 1000;
@@ -24,5 +20,11 @@
         font-weight: bold;
       }
     }
+  }
+}
+
+.invoice-form {
+  textarea {
+    max-width: 100%;
   }
 }

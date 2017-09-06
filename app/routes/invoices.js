@@ -14,7 +14,7 @@ export default Ember.Route.extend({
 			let confirmation = confirm("Are you sure you want to delete this invoice?");
 			
 			if (confirmation) {
-				console.log('delete');
+				record.destroyRecord();
 			}
 		}
 	}

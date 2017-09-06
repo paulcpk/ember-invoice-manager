@@ -23,6 +23,5 @@ export default Factory.extend({
 	totalAfterTax: faker.finance.amount,
 	invoiceTerms: faker.lorem.paragraph,
 	personalData: faker.lorem.paragraph,
-	currency: 'EUR',
-	isTemplate: false
+	currency: 'EUR'
 });
