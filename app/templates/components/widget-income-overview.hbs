@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-bar-chart" aria-hidden="true"></i> Income Overview</h3>
+  </div>
+  <table class="table table-bordered"> 
+    <tbody>
+      {{#each getTotalList as |item|}}
+      <tr> 
+        <td class="cell-status">{{titleize (get item 'status')}}</td> 
+        <td class="cell-total">{{number-format (get item 'total') decimals=2 decimalPoint='.' thousandsSeparator=''}}</td> 
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

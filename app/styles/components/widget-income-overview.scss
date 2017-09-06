@@ -1,0 +1,15 @@
+// Widget-income-overview styles
+
+.widget-income-overview {
+  .panel-body {
+    padding: 0;
+  }
+
+  .table {
+    margin-bottom: 0;
+    
+    .cell-total {
+      text-align: right;
+    }
+  }
+}
