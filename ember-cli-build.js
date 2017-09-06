@@ -8,8 +8,7 @@ module.exports = function(defaults) {
     // Add options here
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false,
-      'quiet': true,
-      'js': false
+      'quiet': true
     },
 
     'ember-cli-string-helpers': {

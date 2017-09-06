@@ -19,7 +19,8 @@ export default Component.extend({
     }, {
       title: 'Due',
       propertyName: 'paymentDueDate',
-      template: "components/models-table/cell-date"
+      template: "components/models-table/cell-date",
+      className: 'payment-due-date'
     }, {
       title: 'Total',
       propertyName: 'total',
@@ -30,6 +31,11 @@ export default Component.extend({
     },{
       title: 'Delete',
       template: "components/models-table/button-delete"
+    },{
+      title: 'Overdue',
+      propertyName: 'isOverdue',
+      isHidden: true,
+      template: "components/models-table/cell-boolean"
     }];
   }),
   

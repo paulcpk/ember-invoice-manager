@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import moment from 'moment';
 
 const { Model, attr, hasMany } = DS;
 const { computed } = Ember;
@@ -36,6 +37,11 @@ export default Model.extend({
 
 	invoiceItems: hasMany('invoice-item'),
 
+	isOverdue: computed('status', 'paymentDueDate', function() {
+		const { status, paymentDueDate } = this.getProperties('status', 'paymentDueDate');
+
+		return status === 'sent' && moment().isAfter(moment(paymentDueDate));
+	}),
 	statusStyle: computed('status', function() {
 		return getStyleClassByStatus(this.get('status'));
 	}),

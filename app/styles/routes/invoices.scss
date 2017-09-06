@@ -17,4 +17,12 @@
   .invoice-status {
     font-size: 12px;
   }
+
+  .table {
+    tr.danger {
+      .payment-due-date {
+        font-weight: bold;
+      }
+    }
+  }
 }
