@@ -7,9 +7,11 @@ export default Component.extend({
     return [{
       title: 'Status',
       propertyName: 'status',
+      template: "components/models-table/cell-label"
     }, {
       title: 'Customer',
-      propertyName: 'recipientAddress'
+      propertyName: 'recipientAddress',
+      template: "components/models-table/cell-text"
     }, {
       title: 'Issued',
       propertyName: 'issuedDate',
@@ -62,7 +64,7 @@ export default Component.extend({
     "theadCell": "table-header",
     "theadCellNoSorting": "table-header-no-sorting",
     "theadCellNoFiltering": "table-header-no-filtering",
-    "tfooterWrapper": "table-footer clearfix",
+    "tfooterWrapper": "table-footer row",
     "footerSummary": "table-summary",
     "footerSummaryNumericPagination": "col-md-4 col-sm-4 col-xs-4",
     "footerSummaryDefaultPagination": "col-md-5 col-sm-5 col-xs-5",

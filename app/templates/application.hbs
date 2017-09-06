@@ -1,6 +1,8 @@
-<div class="app-container">
-  {{partial 'sidebar'}}
-  <main class="main-container container-fluid">
-    {{outlet}}
-  </main>
+<div class="app-container container-fluid">
+  <div class="row">
+    {{partial 'sidebar'}}
+    <main class="main-container">
+      {{outlet}}
+    </main>
+  </div>
 </div>

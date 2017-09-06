@@ -8,4 +8,9 @@
   .form-control {
     color: $black;
   }
+
+  .columns-dropdown {
+    position: relative;
+    z-index: 1000;
+  }
 }
