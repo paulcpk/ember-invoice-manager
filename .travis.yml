@@ -11,11 +11,13 @@ cache:
 
 before_install:
   - npm config set spin false
-  - npm install -g phantomjs-prebuilt
+  - npm install -g phantomjs-prebuilt && npm install -g yarn && npm install -g bower
   - phantomjs --version
+  - bower --version
 
 install:
-  - npm install
+  - bower install
+  - yarn
 
 script:
-  - npm test
+  - yarn run build
