@@ -1,4 +1,9 @@
 ---
+notifications:
+  email:
+    on_success: never
+    on_failure: never
+
 language: node_js
 node_js:
   - "6"
