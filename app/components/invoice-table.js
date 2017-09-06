@@ -9,6 +9,9 @@ export default Component.extend({
       propertyName: 'status',
       template: "components/models-table/cell-label"
     }, {
+      title: 'Invoice Nr.',
+      propertyName: 'invoiceNumber'
+    }, {
       title: 'Customer',
       propertyName: 'recipientAddress',
       template: "components/models-table/cell-text"

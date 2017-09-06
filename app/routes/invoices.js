@@ -6,11 +6,11 @@ export default Ember.Route.extend({
 	},
 
 	actions: {
-		editInvoice() {
-			console.log('edit');
+		editInvoice(record) {
+			this.transitionTo('invoices.edit', record);
 		},
 
-		deleteInvoice() {
+		deleteInvoice(record) {
 			let confirmation = confirm("Are you sure you want to delete this invoice?");
 			
 			if (confirmation) {

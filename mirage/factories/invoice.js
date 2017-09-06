@@ -4,7 +4,7 @@ export default Factory.extend({
 	status: faker.list.random('draft', 'sent', 'paid'),
 	invoiceTitle: faker.lorem.word,
 	invoiceNumber(i) {
-		return i;
+		return ('000000000' + i).slice(-10);
 	},
 	senderLogo: faker.image.avatar,
 	senderAddress: faker.address.streetAddress,

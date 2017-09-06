@@ -10,7 +10,14 @@ Router.map(function() {
   this.route('dashboard');
   this.route('invoices', function() {
     this.route('new');
+    this.route('edit', { path: '/edit/:id' });
   });
+
+  this.route('invoice', function() {
+    this.route('edit');
+  });
+
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
