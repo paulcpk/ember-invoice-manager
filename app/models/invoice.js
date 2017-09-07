@@ -5,6 +5,8 @@ import moment from 'moment';
 const { Model, attr, hasMany } = DS;
 const { computed } = Ember;
 
+export const statusList = ['draft', 'sent', 'paid'];
+
 export function getStyleClassByStatus(status) {
 	const styles = {
 		'draft': 'default',
@@ -18,7 +20,6 @@ export function getStyleClassByStatus(status) {
 
 export default Model.extend({
 	status: attr('string'),
-	invoiceTitle: attr('string'),
 	invoiceNumber: attr('string'),
 	senderLogo: attr('string'),
 	senderAddress: attr('string'),

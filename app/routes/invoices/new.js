@@ -1,8 +1,15 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Route.extend({
-  model(params) {
-    return this.get('store').createRecord('invoice');
+  model() {
+    return this.get('store').createRecord('invoice', {
+      'status': 'draft',
+      'issuedDate': moment().toDate(),
+      'serviceFromDate': moment().subtract(1, 'month').toDate(),
+      'serviceToDate': moment().toDate(),
+      'paymentDueDate': moment().add(1, 'month').toDate()
+    });
   },
 
   renderTemplate() {
@@ -10,22 +17,12 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    saveInvoice(invoice) {
-      invoice.save().then(() => this.transitionTo('invoices'));
+    save(changeset) {
+      return changeset.save().then(() => this.transitionTo('invoices.edit', changeset));
     },
 
-    willTransition(transition) {
-      let model = this.controller.get('model');
-
-      if (model.get('hasDirtyAttributes')) {
-        let confirmation = confirm("Your changes haven't saved yet. Would you like to leave this form?");
-
-        if (confirmation) {
-          model.rollbackAttributes();
-        } else {
-          transition.abort();
-        }
-      }
+    rollback(changeset) {
+      return changeset.rollback();
     }
   }
 });

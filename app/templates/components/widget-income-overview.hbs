@@ -7,7 +7,7 @@
       {{#each getTotalList as |item|}}
       <tr> 
         <td class="cell-status">{{titleize (get item 'status')}}</td> 
-        <td class="cell-total">{{number-format (get item 'total') decimals=2 decimalPoint='.' thousandsSeparator=''}}</td> 
+        <td class="cell-total">${{number-format (get item 'total') decimals=2 decimalPoint='.' thousandsSeparator=''}}</td> 
       </tr>
       {{/each}}
     </tbody>

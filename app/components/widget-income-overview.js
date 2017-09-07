@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { getStyleClassByStatus } from 'ember-invoice-manager/models/invoice';
+import {getStyleClassByStatus} from 'ember-invoice-manager/models/invoice';
 
-const { computed, Component } = Ember;
+const {computed, Component} = Ember;
 
 export function getTotalByStatus(model, status) {
   const filteredModel = model.filterBy('status', status);

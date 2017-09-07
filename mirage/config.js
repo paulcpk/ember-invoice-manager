@@ -6,6 +6,8 @@ export default function() {
 
   this.get('/invoices');
   this.get('/invoices/:id');
+  this.post('/invoices/');
+  this.patch('/invoices/:id');
   this.del('/invoices/:id');
 
   this.get('/invoice-items');

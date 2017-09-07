@@ -1,12 +1,13 @@
 <div class="row">
+  <div class="header-navigation col-xs-12">
+    {{#link-to "invoices" class="btn btn-primary btn-sm" tagName="a" active=false}}<i class="fa fa-reply" aria-hidden="true"></i> Go Back{{/link-to}}
+  </div>
   <div class="col-xs-12">
-    <h1 class="route-headline">{{#link-to "invoices" class="btn btn-primary btn-sm" tagName="a" active=false}}<i class="fa fa-reply" aria-hidden="true"></i> Go Back{{/link-to}} {{model.invoiceTitle}}</h1>
+    <h1 class="route-headline">{{if model.invoiceNumber model.invoiceNumber "New Invoice"}}</h1>
   </div>
 </div>
 <div class="row">
   {{invoice-form 
-    model=model
-    changeset=(changeset model)
-    submit=(action "submit")
-    rollback=(action "rollback")}}
+    model=model 
+    changeset=(changeset model)}}
 </div>

@@ -7,34 +7,77 @@
         </div>
         <div class="panel-body">
           <div class="form-group">
-            <label for="invoiceTitle">Invoice Title</label>
-            {{input type="text" name='changeset.invoiceTitle' value=invoiceTitle size="100" class="form-control"}}
+            <label for="status">Status</label>
+            {{#power-select
+              options=statusList
+              searchEnabled=false
+              selected=changeset.status
+              onchange=(action (mut changeset.status))
+              as |status|
+            }}
+              {{titleize status}}
+            {{/power-select}}
           </div>
           <div class="form-group">
             <label for="invoiceNumber">Invoice Number</label>
-            {{input type="text" name='changeset.invoiceNumber' value=invoiceNumber size="100" class="form-control"}}
+            {{input type="text" name="invoiceNumber" value=changeset.invoiceNumber size="100" class="form-control"}}
           </div>
           <div class="form-group">
             <label for="senderLogo">Logo</label>
-            {{input type="file" name='changeset.senderLogo' value=senderLogo size="100" class="form-control"}}
+            {{input type="file" name="senderLogo" value=changeset.senderLogo size="100" class="form-control"}}
           </div>
           <div class="form-group">
             <label for="senderAddress">Sender Address</label>
-            {{textarea name='changeset.senderAddress' value=senderAddress cols='80' rows='3' class="form-control"}}
+            {{textarea name="senderAddress" value=changeset.senderAddress cols="80" rows="3" class="form-control"}}
           </div>
           <div class="form-group">
             <label for="recipientAddress">Recipient Address</label>
-            {{textarea name='changeset.recipientAddress' value=recipientAddress cols='80' rows='3' class="form-control"}}
+            {{textarea name="recipientAddress" value=changeset.recipientAddress cols="80" rows="3" class="form-control"}}
           </div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
-          <div class="form-group"></div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="issuedDate">Invoice Date</label>
+                {{bootstrap-datepicker value=changeset.issuedDate autoclose=true name="issuedDate" class="form-control" format="dd-mm-yyyy"}}
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="paymentDueDate">Due Date</label>
+                {{bootstrap-datepicker value=changeset.paymentDueDate autoclose=true name="paymentDueDate" class="form-control" format="dd-mm-yyyy"}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="serviceFromDate">Service From</label>
+                {{bootstrap-datepicker value=changeset.serviceFromDate autoclose=true name="serviceFromDate" class="form-control" format="dd-mm-yyyy"}}
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="serviceToDate">Service To</label>
+                {{bootstrap-datepicker value=changeset.serviceToDate autoclose=true name="serviceToDate" class="form-control" format="dd-mm-yyyy"}}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="invoiceTerms">Invoice Terms</label>
+            {{textarea name="invoiceTerms" value=changeset.invoiceTerms cols="80" rows="3" class="form-control"}}
+          </div>
+          <div class="form-group">
+            <label for="personalData">Personal Data</label>
+            {{textarea name="personalData" value=changeset.personalData cols="80" rows="3" class="form-control"}}
+          </div>
+        </div>
+        <div class="panel-footer">            
+          <button class="btn btn-primary" {{action (route-action "save" changeset)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+          <button class="btn btn-default" {{action (route-action "rollback" changeset)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+          <button class="btn btn-danger pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
         </div>
       </div>
       <div class="col-xs-6"></div>
     </div>
-    </div>
+  </div>
 </form>

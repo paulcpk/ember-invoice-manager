@@ -15,6 +15,11 @@ export default Ember.Route.extend({
 			
 			if (confirmation) {
 				record.destroyRecord();
+				
+				// if action was triggered from a different view, redirect user to /invoices
+				if (this.get('routeName') !== 'invoices') {
+					this.transitionTo('invoices');
+				}
 			}
 		}
 	}

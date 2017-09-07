@@ -1,12 +1,8 @@
 import Ember from 'ember';
-import Changeset from 'ember-changeset';
+import { statusList } from 'ember-invoice-manager/models/invoice';
 
-const { Component } = Ember;
+const { Component, computed } = Ember;
 
 export default Component.extend({
-  init() {
-    this._super(...arguments);
-    let model = this.get('model');
-    this.changeset = new Changeset(model);
-  }
+  statusList: statusList
 });

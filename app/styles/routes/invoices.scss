@@ -1,5 +1,9 @@
 // Invoice route styles
 
+.header-navigation {
+  margin-top: 15px;
+}
+
 .inner-table-wrapper {
   margin-top: 15px;
 }
@@ -12,6 +16,8 @@
 
   .invoice-status {
     font-size: 12px;
+    display: block;
+    padding: 6px 10px;
   }
 
   .table {
