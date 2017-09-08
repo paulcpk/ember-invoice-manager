@@ -21,7 +21,6 @@ export function getStyleClassByStatus(status) {
 export default Model.extend({
 	status: attr('string'),
 	invoiceNumber: attr('string'),
-	senderLogo: attr('string'),
 	senderAddress: attr('string'),
 	recipientAddress: attr('string'),
 	createdAt: attr('date'),

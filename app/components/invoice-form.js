@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import { statusList } from 'ember-invoice-manager/models/invoice';
 
-const { Component, computed } = Ember;
+const { Component } = Ember;
 
 export default Component.extend({
+  isEditRoute: false,
   statusList: statusList
 });

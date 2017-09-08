@@ -22,7 +22,7 @@ export default Ember.Route.extend({
     },
 
     rollback(changeset) {
-      return changeset.rollback();
+      this.transitionTo('invoices');
     }
   }
 });

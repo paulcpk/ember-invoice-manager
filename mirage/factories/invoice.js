@@ -5,7 +5,6 @@ export default Factory.extend({
 	invoiceNumber(i) {
 		return 'INV-' + ('000000000' + i).slice(-10);
 	},
-	senderLogo: faker.image.avatar,
 	senderAddress: faker.address.streetAddress,
 	recipientAddress: faker.address.streetAddress,
 	createdAt: faker.date.recent,
