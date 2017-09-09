@@ -65,7 +65,7 @@ export default Component.extend({
   classes: Ember.Object.create({
     "outerTableWrapper": "",
     "innerTableWrapper": "inner-table-wrapper",
-    "table": "table table-striped table-bordered table-condensed",
+    "table": "table table-bordered table-condensed",
     "globalFilterWrapper": "pull-left",
     "columnsDropdownWrapper": "pull-right columns-dropdown",
     "columnsDropdownButtonWrapper": "btn-group",

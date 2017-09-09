@@ -6,6 +6,11 @@
 
 .inner-table-wrapper {
   margin-top: 15px;
+  border-radius: 3px;
+
+  .table {
+    background-color: $white;
+  }
 }
 
 .models-table-wrapper {
@@ -30,7 +35,20 @@
 }
 
 .invoice-form {
+  .ember-power-select-trigger {
+    height: 34px;
+    line-height: 32px;
+  }
+
   textarea {
     max-width: 100%;
+  }
+
+  .item-list {
+    margin-bottom: 0;
+    
+    .invoice-item-amount {
+      text-align: right;
+    }
   }
 }

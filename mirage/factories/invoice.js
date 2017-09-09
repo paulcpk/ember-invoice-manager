@@ -5,8 +5,12 @@ export default Factory.extend({
 	invoiceNumber(i) {
 		return 'INV-' + ('000000000' + i).slice(-10);
 	},
-	senderAddress: faker.address.streetAddress,
-	recipientAddress: faker.address.streetAddress,
+	senderAddress() {
+		return faker.company.companyName() + '\n' + faker.address.streetAddress();
+	},
+	recipientAddress() {
+		return faker.company.companyName() + '\n' + faker.address.streetAddress();
+	},
 	createdAt: faker.date.recent,
 	editedAt: faker.date.recent,
 	issuedDate: faker.date.recent,
