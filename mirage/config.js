@@ -12,5 +12,6 @@ export default function() {
 
   this.get('/invoice-items');
   this.get('/invoice-items/:id');
+  this.del('/invoice-items/:id');
 
 }

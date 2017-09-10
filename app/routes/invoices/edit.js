@@ -20,6 +20,10 @@ export default Ember.Route.extend({
 
     delete(record) {
       this.send('deleteInvoice', record);
+    },
+
+    deleteItem(record) {
+      this.send('deleteInvoiceItem', record);
     }
   }
 });

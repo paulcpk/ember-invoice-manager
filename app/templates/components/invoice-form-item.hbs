@@ -1,4 +1,4 @@
 <td class="invoice-item-description">{{model.description}}</td>
 <td class="invoice-item-amount">{{model.amount}} {{currency}}</td>
-<td class="invoice-item-add-remove"><button class="btn btn-danger btn-xs"><i class="fa fa-minus"></i></button></td>
+<td class="invoice-item-add-remove"><button class="btn btn-danger btn-xs" {{action (route-action "deleteItem" model)}}><i class="fa fa-minus"></i></button></td>
 

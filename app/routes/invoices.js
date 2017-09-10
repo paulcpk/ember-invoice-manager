@@ -21,6 +21,14 @@ export default Ember.Route.extend({
 					this.transitionTo('invoices');
 				}
 			}
+		},
+
+		// createItem(record, model) {
+
+		// },
+
+		deleteInvoiceItem(record) {
+			record.destroyRecord();
 		}
 	}
 });

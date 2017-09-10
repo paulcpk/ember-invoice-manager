@@ -23,6 +23,10 @@ export default Ember.Route.extend({
 
     rollback(changeset) {
       this.transitionTo('invoices');
+    },
+
+    deleteItem(record) {
+      this.send('deleteRecord', record);
     }
   }
 });
