@@ -18,15 +18,13 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      return changeset.save().then(() => this.transitionTo('invoices.edit', changeset));
+      return RSVP.all(changeset.get('invoiceItems').filterBy('dirtyType', 'created').invoke('save')).then(() => {
+        return changeset.save().then(() => this.transitionTo('invoices.edit', changeset));
+      });
     },
 
-    rollback(changeset) {
+    rollback() {
       this.transitionTo('invoices');
-    },
-
-    deleteItem(record) {
-      this.send('deleteRecord', record);
     }
   }
 });

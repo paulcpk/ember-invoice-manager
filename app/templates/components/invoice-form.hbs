@@ -105,14 +105,14 @@
             </thead>
             <tbody>
               {{#each changeset.invoiceItems as |item|}}
-                {{invoice-form-item model=item currency=changeset.currency}}
+                {{invoice-form-item model=item currency=changeset.currency deleteItem=(action "deleteItem")}}
               {{/each}}
             </tbody>
             <tfoot>
               <tr>
-                <td>{{input type="text" name="invoiceNumber" value="" size="100" class="form-control" placeholder="Add new item"}}</td>
-                <td>{{input type="text" name="invoiceNumber" value="" size="100" class="form-control" placeholder="Add amount"}}</td>
-                <td><button class="btn btn-primary btn-xs"><i class="fa fa-plus"></i></button></td>
+                <td>{{input type="text" name="invoiceNumber" value=newItemDescription size="100" class="form-control" placeholder="Add new item"}}</td>
+                <td>{{input type="text" name="invoiceNumber" value=newItemAmount size="100" class="form-control" placeholder="Add amount"}}</td>
+                <td><button class="btn btn-primary btn-xs" {{action "createItem" changeset}}><i class="fa fa-plus"></i></button></td>
               </tr>
             </tfoot>
           </table>

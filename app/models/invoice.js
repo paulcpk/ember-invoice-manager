@@ -46,7 +46,7 @@ export default Model.extend({
 	}),
 	total: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
-				return sum + item.get('amount');
+				return sum + parseFloat(item.get('amount'));
 		}, 0);
 	}),
 	totalAfterTax: computed('total', function() {
