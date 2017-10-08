@@ -12,6 +12,7 @@ export default function() {
 
   this.get('/invoice-items');
   this.get('/invoice-items/:id');
+  this.patch('/invoice-items/:id');
   this.post('/invoice-items');
   this.del('/invoice-items/:id');
 
