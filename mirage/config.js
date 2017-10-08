@@ -15,5 +15,4 @@ export default function() {
   this.patch('/invoice-items/:id');
   this.post('/invoice-items');
   this.del('/invoice-items/:id');
-
 }

@@ -7,5 +7,5 @@ export default Model.extend({
 	amount: attr('number'),
 	description: attr('string'),
 	
-	invoice: belongsTo('invoice')
+	// invoice: belongsTo('invoice')
 });
