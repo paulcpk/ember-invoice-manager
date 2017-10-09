@@ -21,7 +21,7 @@ export default Component.extend({
 
   actions: {
     createItem() {
-      const { newItemDescription, newItemAmount, model } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
+      const { newItemDescription, newItemAmount } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
       
       const record = this.get('store').createRecord('invoice-item', {
         createdAt: moment().toDate(),
