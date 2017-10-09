@@ -8,7 +8,7 @@ export default function(server) {
   const NUMBER_OF_INVOICES = 30;
 
   for (let i = NUMBER_OF_INVOICES; i--;) {
-    const randomNumber = Math.floor(Math.random() * 7);
+    const randomNumber = Math.floor(Math.random() * 7) + 1;
 
     let invoice = server.create('invoice');
     server.createList('invoiceItem', randomNumber, { invoiceId: invoice.id });

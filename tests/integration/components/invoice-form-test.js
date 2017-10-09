@@ -5,21 +5,16 @@ moduleForComponent('invoice-form', 'Integration | Component | invoice form', {
   integration: true
 });
 
-test('it renders', function(assert) {
+const invoiceModel = server.create('invoice');
+server.createList('invoiceItem', 5, { invoiceId: invoiceModel.id });
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+// test('it renders', function(assert) {
 
-  this.render(hbs`{{invoice-form}}`);
+//   this.render(hbs`
+//     {{invoice-form
+//     isEditRoute=true
+//     model=invoiceModel}}
+//   `);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#invoice-form}}
-      template block text
-    {{/invoice-form}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
-});
+//   assert.equal(this.$().text().trim(), 'template block text');
+// });
