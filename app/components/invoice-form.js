@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import { statusList } from 'ember-invoice-manager/models/invoice';
-import moment from 'moment';
 import Changeset from 'ember-changeset';
 
 const { Component, inject, computed } = Ember;
@@ -23,11 +22,10 @@ export default Component.extend({
     createItem() {
       const { newItemDescription, newItemAmount } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
       
-      const record = this.get('store').createRecord('invoice-item', {
-        createdAt: moment().toDate(),
+      const record = {
         amount: newItemAmount,
         description: newItemDescription
-      });
+      };
 
       this.setProperties({
         'newItemDescription': '',

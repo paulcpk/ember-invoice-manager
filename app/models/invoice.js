@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import moment from 'moment';
 
-const { Model, attr, hasMany } = DS;
+const { Model, attr } = DS;
 const { computed } = Ember;
 
 export const statusList = ['draft', 'sent', 'paid'];
@@ -34,7 +34,7 @@ export default Model.extend({
 	personalData: attr('string'),
 	currency: attr('string'),
 
-	invoiceItems: hasMany('invoice-item'),
+	invoiceItems: attr(),
 
 	isOverdue: computed('status', 'paymentDueDate', function() {
 		const { status, paymentDueDate } = this.getProperties('status', 'paymentDueDate');
@@ -46,7 +46,7 @@ export default Model.extend({
 	}),
 	total: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
-				return sum + parseFloat(item.get('amount'));
+				return sum + parseFloat(item.amount);
 		}, 0);
 	}),
 	totalAfterTax: computed('total', function() {

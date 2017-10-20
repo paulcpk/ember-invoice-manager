@@ -1,4 +1,5 @@
 import { Factory, faker } from 'ember-cli-mirage';
+import generateInvoiceItems from 'ember-invoice-manager/helpers/generate-invoice-items';
 
 export default Factory.extend({
 	status: faker.list.random('draft', 'sent', 'paid'),
@@ -25,5 +26,8 @@ export default Factory.extend({
 	totalAfterTax: faker.finance.amount,
 	invoiceTerms: faker.lorem.paragraph,
 	personalData: faker.lorem.paragraph,
-	currency: 'EUR'
+	currency: 'EUR',
+	invoiceItems() {
+		return generateInvoiceItems(Math.floor(Math.random() * 7) + 1);
+	}
 });
