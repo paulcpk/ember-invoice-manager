@@ -54,7 +54,8 @@
     "ember-route-action-helper": "^2.0.6",
     "ember-source": "~2.14.1",
     "ember-string-helpers": "^1.0.2",
-    "loader.js": "^4.2.3"
+    "loader.js": "^4.2.3",
+    "phantomjs": "^2.1.7"
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"

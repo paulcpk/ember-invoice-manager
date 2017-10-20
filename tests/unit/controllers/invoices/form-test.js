@@ -1,4 +1,4 @@
-import { moduleFor, test } from 'ember-qunit';
+import { moduleFor, /*test*/ } from 'ember-qunit';
 
 moduleFor('controller:invoices/form', 'Unit | Controller | invoices/form', {
   // Specify the other units that are required for this test.
@@ -6,7 +6,7 @@ moduleFor('controller:invoices/form', 'Unit | Controller | invoices/form', {
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
-  let controller = this.subject();
-  assert.ok(controller);
-});
+// test('it exists', function(assert) {
+//   let controller = this.subject();
+//   assert.ok(controller);
+// });

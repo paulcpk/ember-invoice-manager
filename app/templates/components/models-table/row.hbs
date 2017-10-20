@@ -1,4 +1,4 @@
-<tr class="{{if (exists-in _selectedItems record) "selected-row"}} {{if (get record 'isOverdue') "danger"}}" {{action "clickOnRow" index record on="click" preventDefault=false}}>
+<tr class="invoice-row {{if (exists-in _selectedItems record) "selected-row"}} {{if (get record 'isOverdue') "danger"}}" {{action "clickOnRow" index record on="click" preventDefault=false}}>
   {{#each processedColumns as |column|}}
     {{#if column.isVisible}}
       <td class={{column.className}}>

@@ -1,12 +1,12 @@
-import { moduleForComponent, test } from 'ember-qunit';
-import hbs from 'htmlbars-inline-precompile';
+import { moduleForComponent, /*test*/ } from 'ember-qunit';
+// import hbs from 'htmlbars-inline-precompile';
 
 moduleForComponent('invoice-form', 'Integration | Component | invoice form', {
   integration: true
 });
 
-const invoiceModel = server.create('invoice');
-server.createList('invoiceItem', 5, { invoiceId: invoiceModel.id });
+// const invoiceModel = server.create('invoice');
+// server.createList('invoiceItem', 5, { invoiceId: invoiceModel.id });
 
 // test('it renders', function(assert) {
 
@@ -16,5 +16,5 @@ server.createList('invoiceItem', 5, { invoiceId: invoiceModel.id });
 //     model=invoiceModel}}
 //   `);
 
-//   assert.equal(this.$().text().trim(), 'template block text');
+//   assert.equal(this.$('.table tr').length, 5);
 // });
