@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-const { RSVP } = Ember;
-
 export default Ember.Route.extend({
   model(params) {
     return this.get('store').findRecord('invoice', params.invoice_id);
@@ -13,13 +11,12 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      return RSVP.all(changeset.get('invoiceItems').filterBy('dirtyType', 'created').invoke('save')).then(() => {
-        return changeset.save().then(() => this.transitionTo('invoices'));
-      });
+      return changeset.save().then(() => this.transitionTo('invoices'));
     },
 
-    rollback(changeset) {
-      return changeset.rollback();
+    cancel(changeset) {
+      changeset.rollback();
+      return this.transitionTo('invoices');
     },
 
     delete(record) {

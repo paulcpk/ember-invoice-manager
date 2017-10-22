@@ -1,2 +1,6 @@
 {{title pageTitle}}
 <h2 class="route-headline">{{pageTitle}}</h2>
+{{#if showPrintButton}}
+  <button class="btn btn-primary print-button" {{action "printInvoice"}}><i class="fa fa-print"></i>Print</button>
+  <iframe id="printFrame" src="" frameborder="0" height="0" width="0" style="display: none;"></iframe>
+{{/if}}

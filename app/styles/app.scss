@@ -1,21 +1,24 @@
 // variables
-@import "variables";
+@import 'variables';
 
 // external dependencies
-@import "bootstrap";
-@import "bootstrap/_nav-outline";
+@import 'bootstrap';
+@import 'bootstrap/_nav-outline';
 
 // main styles
-@import "main";
+@import 'main';
 
 // partial styles
-@import "partials/sidebar";
+@import 'partials/sidebar';
 
 // component styles
-@import "components/widget-income-overview";
-@import "components/header-navigation";
+@import 'components/widget-income-overview';
+@import 'components/header-navigation';
 
 // route styles
-@import "routes/dashboard";
-@import "routes/invoices";
-@import "ember-power-select";
+@import 'routes/dashboard';
+@import 'routes/invoices';
+@import 'ember-power-select';
+
+// print styles
+@import 'print';

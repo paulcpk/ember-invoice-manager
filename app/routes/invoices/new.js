@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import moment from 'moment';
 
-const { RSVP } = Ember;
+// const { get } = Ember;
 
 export default Ember.Route.extend({
   model() {
@@ -20,13 +20,11 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      return RSVP.all(changeset.get('invoiceItems').filterBy('dirtyType', 'created').invoke('save')).then(() => {
-        return changeset.save().then(() => this.transitionTo('invoices'));
-      });
+      return changeset.save().then(() => this.transitionTo('invoices'));
     },
 
-    rollback() {
-      this.transitionTo('invoices');
+    cancel() {
+      return this.transitionTo('invoices');
     }
   }
 });

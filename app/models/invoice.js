@@ -34,7 +34,9 @@ export default Model.extend({
 	personalData: attr('string'),
 	currency: attr('string'),
 
-	invoiceItems: attr(),
+	invoiceItems: attr('', {
+    defaultValue() { return Ember.A(); }
+  }),
 
 	isOverdue: computed('status', 'paymentDueDate', function() {
 		const { status, paymentDueDate } = this.getProperties('status', 'paymentDueDate');

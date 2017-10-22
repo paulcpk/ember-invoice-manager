@@ -1,4 +1,4 @@
-{{header-navigation pageTitle=(if model.invoiceNumber model.invoiceNumber "New Invoice")}}
+{{header-navigation pageTitle=(if model.invoiceNumber model.invoiceNumber "New Invoice") showPrintButton=true}}
 <div class="row">
   {{invoice-form
     isEditRoute=isEditRoute

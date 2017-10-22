@@ -1,0 +1,91 @@
+<div class="invoice-view">
+  <header id="header" class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        {{!-- <div class="logo">
+          <img src="dist/images/logo_webcascade.svg" alt="webcascade" height="120" width="103">
+        </div> --}}
+        <span class="company-address">
+            {{model.senderAddress}}
+        </span>
+      </div>
+      <div class="col-xs-6">
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1><span class="invoice-number">{{model.invoiceNumber}}</span></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-7">
+        <span class="customer-address">
+          {{model.recipientAddress}}
+        </span>
+      </div>
+      <div class="col-xs-5">
+        <table class="table invoice-data">
+          <tbody>
+              <tr>
+                <td>Issued at:</td>
+                <td>{{moment-format model.issuedDate 'DD-MM-YYYY'}}</td>
+              </tr>
+              <tr>
+                <td>Service period:</td>
+                <td>{{moment-format model.serviceFromDate 'DD-MM-YYYY'}} - {{moment-format model.serviceToDate 'DD-MM-YYYY'}}</td>
+              </tr>
+              <tr>
+                <td>Payment due:</td>
+                <td>{{moment-format model.paymentDueDate 'DD-MM-YYYY'}}</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <table class="table product-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each model.invoiceItems as |item|}}
+              <tr>
+                <td>{{item.description}}</td>
+                <td>{{item.amount}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+            <tfoot>
+              <tr class="sum-total">
+                <td>Total</td>
+                <td><b>{{model.total}}</b></td>
+              </tr>
+            </tfoot>
+          </table>
+      </div>
+    </div>
+  </main>
+  <footer id="footer" class="container">
+    <div class="row">
+      <div class="col-xs-5">
+        <h4>Terms</h4>
+        <span class="data-box">
+          {{model.invoiceTerms}}
+        </span>
+      </div>
+      <div class="col-xs-6 col-xs-offset-1">
+        <h4>Thank you</h4>
+        <span class="data-box">
+          {{model.personalData}}
+        </span>
+      </div>
+    </div>
+  </footer>
+</div>

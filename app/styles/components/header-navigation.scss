@@ -1,1 +1,10 @@
 // Header navigation styles
+.header-navigation {
+    position: relative;
+
+    .print-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+}

@@ -1,0 +1,44 @@
+// print styles
+
+@media print {
+  body {
+    background-color: $white;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    line-height: 36px;
+    border-bottom: 2px solid $light-gray;
+  }
+  
+  hr {
+    border-top: 2px solid $light-gray;
+  }
+  
+  a {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  h3,
+  h4 {
+    font-weight: bold;
+  }
+
+  .sidebar-container {
+    display: none;
+  }
+
+  .main-container {
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+}

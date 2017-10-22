@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('invoices', function() {
     this.route('new');
     this.route('edit', { path: '/edit/:invoice_id' });
+    this.route('view', { path: '/view/:invoice_id' });
   });
 
   this.route('not-found', { path: '/*path' });
