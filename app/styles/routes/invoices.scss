@@ -38,6 +38,8 @@
 
   textarea {
     max-width: 100%;
+    min-height: 45px;
+    overflow: auto;
   }
 
   .item-list {
