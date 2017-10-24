@@ -1,6 +1,5 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'ember-invoice-manager/tests/helpers/module-for-acceptance';
-import { generateInvoices } from 'ember-invoice-manager/tests/helpers/generate-invoices';
 
 moduleForAcceptance('Acceptance | invoices');
 
@@ -13,7 +12,7 @@ test('visiting /invoices', function(assert) {
 });
 
 test("I can view the invoices in the table", function(assert) {
-  generateInvoices(server, 25);
+  server.createList('invoice', 25);
 
   visit('/invoices');
 
