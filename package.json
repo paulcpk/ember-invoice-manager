@@ -46,6 +46,7 @@
     "ember-font-awesome": "^3.0.5",
     "ember-light-table": "^1.10.0",
     "ember-load-initializers": "^1.0.0",
+    "ember-lokijs": "^0.2.3",
     "ember-models-table": "^1.13.0",
     "ember-moment": "^7.4.1",
     "ember-page-title": "^3.2.2",

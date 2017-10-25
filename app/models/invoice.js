@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import moment from 'moment';
+import { LokiJSModelMixin } from 'ember-lokijs';
 
 const { Model, attr } = DS;
 const { computed } = Ember;
@@ -18,7 +19,7 @@ export function getStyleClassByStatus(status) {
 	return styles[status] ? styles[status] : styles['default'];
 }
 
-export default Model.extend({
+export default Model.extend(LokiJSModelMixin, {
 	status: attr('string'),
 	invoiceNumber: attr('string'),
 	senderAddress: attr('string'),
