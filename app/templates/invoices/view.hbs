@@ -58,14 +58,14 @@
               {{#each model.invoiceItems as |item|}}
               <tr>
                 <td>{{item.description}}</td>
-                <td>{{item.amount}}</td>
+                <td>{{item.amount}} {{model.currency}}</td>
               </tr>
               {{/each}}
             </tbody>
             <tfoot>
               <tr class="sum-total">
                 <td>Total</td>
-                <td><b>{{model.total}}</b></td>
+                <td><b>{{model.total}} {{model.currency}}</b></td>
               </tr>
             </tfoot>
           </table>
