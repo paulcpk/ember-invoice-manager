@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      return changeset.save().then(() => this.transitionTo('invoices'));
+      return changeset.save();
     },
 
     cancel(changeset) {

@@ -1,10 +1,12 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import moment from 'moment';
+import ENV from '../config/environment';
 import { LokiJSModelMixin } from 'ember-lokijs';
 
 const { Model, attr } = DS;
 const { computed } = Ember;
+const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
 export const statusList = ['draft', 'sent', 'paid'];
 
@@ -19,7 +21,7 @@ export function getStyleClassByStatus(status) {
 	return styles[status] ? styles[status] : styles['default'];
 }
 
-export default Model.extend(LokiJSModelMixin, {
+export default Model.extend(ModelMixin, {
 	status: attr('string'),
 	invoiceNumber: attr('string'),
 	senderAddress: attr('string'),
@@ -50,11 +52,14 @@ export default Model.extend(LokiJSModelMixin, {
 	total: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
 				return sum + parseFloat(item.amount);
-		}, 0);
+		}, 0).toFixed(2);
 	}),
-	totalAfterTax: computed('total', function() {
-		const taxMultiplicator = this.get('taxRate') / 100 + 1;
-		const totalAfterTax = this.get('total') * taxMultiplicator;
-		return totalAfterTax.toFixed(2);
+	taxAmount: computed('taxRate', 'total', function() {
+		const { taxRate, total } = this.getProperties('taxRate', 'total');
+		const taxMultiplicator = taxRate / 100;
+		return (total * taxMultiplicator).toFixed(2);
+	}),
+	totalAfterTax: computed('total', 'taxAmount', function() {
+		return (parseFloat(this.get('total')) + parseFloat(this.get('taxAmount'))).toFixed(2);
 	})
 });

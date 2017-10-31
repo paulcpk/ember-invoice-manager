@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import { statusList } from 'ember-invoice-manager/models/invoice';
-import Changeset from 'ember-changeset';
 
-const { Component, inject, computed } = Ember;
+const { Component, inject } = Ember;
 
 export default Component.extend({
   store: inject.service('store'),
@@ -10,13 +9,6 @@ export default Component.extend({
   statusList: statusList,
   newItemDescription: '',
   newItemAmount: '',
-  changes: computed.alias('changeset.changes'),
-
-  init() {
-    this._super(...arguments);
-    let model = this.get('model');
-    this.changeset = new Changeset(model);
-  },
 
   actions: {
     createItem() {

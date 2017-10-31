@@ -1,5 +1,15 @@
 import DS from 'ember-data';
+import ENV from '../config/environment';
+import { LokiJSAdapter } from 'ember-lokijs';
 
-export default DS.JSONAPIAdapter.extend({
-  namespace: 'api'
-});
+const adapter = ENV.useDb ? 
+  LokiJSAdapter.extend({
+    lokiOptions: {
+      autosave: true
+    }
+  }) :
+  DS.JSONAPIAdapter.extend({
+    namespace: 'api'
+  });
+
+export default adapter;

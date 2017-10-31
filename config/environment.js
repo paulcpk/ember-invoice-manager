@@ -2,7 +2,10 @@
 'use strict';
 
 module.exports = function(environment) {
+  const useDb = false;
+  
   let ENV = {
+    useDb,
     modulePrefix: 'ember-invoice-manager',
     environment,
     rootURL: '/',
@@ -36,7 +39,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-cli-mirage'] = {
-    enabled: false
+    enabled: !useDb
   };
 
   if (environment === 'development') {

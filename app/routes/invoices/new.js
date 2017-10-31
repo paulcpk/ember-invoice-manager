@@ -1,8 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
 
-// const { get } = Ember;
-
 export default Ember.Route.extend({
   model() {
     return this.get('store').createRecord('invoice', {
@@ -20,7 +18,7 @@ export default Ember.Route.extend({
 
   actions: {
     save(changeset) {
-      return changeset.save().then(() => this.transitionTo('invoices'));
+      return changeset.save();
     },
 
     cancel() {
