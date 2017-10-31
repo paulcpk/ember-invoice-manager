@@ -46,6 +46,7 @@ export default Model.extend(ModelMixin, {
 
 		return status === 'sent' && moment().isAfter(moment(paymentDueDate));
 	}),
+	isValidTaxRate: computed.gt('taxRate', 0),
 	statusStyle: computed('status', function() {
 		return getStyleClassByStatus(this.get('status'));
 	}),
@@ -60,7 +61,8 @@ export default Model.extend(ModelMixin, {
 		return (subTotal * taxMultiplicator).toFixed(2);
 	}),
 	total: computed('subTotal', 'taxAmount', function() {
-		const total = (parseFloat(this.get('subTotal')) + parseFloat(this.get('taxAmount')));
-		return total ? total.toFixed(2) : parseFloat(0).toFixed(2);
+		const { subTotal, taxAmount } = this.getProperties('subTotal', 'taxAmount');
+		const total = (parseFloat(subTotal) + parseFloat(taxAmount));
+		return total ? total.toFixed(2) : parseFloat(subTotal).toFixed(2);
 	})
 });

@@ -6,7 +6,7 @@
           <img src="dist/images/logo_webcascade.svg" alt="webcascade" height="120" width="103">
         </div> --}}
         <span class="company-address">
-            {{model.senderAddress}}
+            {{linebreak-renderer model.senderAddress}}
         </span>
       </div>
       <div class="col-xs-6">
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-xs-7">
         <span class="customer-address">
-          {{model.recipientAddress}}
+          {{linebreak-renderer model.recipientAddress}}
         </span>
       </div>
       <div class="col-xs-5">
@@ -63,7 +63,7 @@
               {{/each}}
             </tbody>
             <tfoot>
-              {{#if model.taxRate}}
+              {{#if model.isValidTaxRate}}
                 <tr>
                   <td>Subtotal</td>
                   <td>{{model.subTotal}}&nbsp;{{model.currency}}</td>

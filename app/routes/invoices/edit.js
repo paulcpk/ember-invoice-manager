@@ -11,7 +11,8 @@ export default Ember.Route.extend({
 
   actions: {
     willTransition(transition) {
-      if (!confirm('Are you sure you want to leave? Your changes will be lost.')) {
+      if (this.get('controller.model.hasDirtyAttributes') && 
+          !confirm('Are you sure you want to leave? Your changes will be lost.')) {
         transition.abort();
       } else {
         return true;
@@ -19,7 +20,7 @@ export default Ember.Route.extend({
     },
     
     save(model) {
-      return model.save();
+      model.save().then(() => this.transitionTo('invoices'))
     },
 
     cancel(model) {
