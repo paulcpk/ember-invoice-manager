@@ -49,6 +49,19 @@
       text-align: right;
     }
   }
+
+  .total-list {
+    margin-bottom: 0;
+    tr:first-child {
+      td {
+        border-top: none;
+      }
+    }
+
+    td:last-child {
+      text-align: right;
+    }
+  }
 }
 
 
@@ -82,7 +95,7 @@
     text-align: right;
   }
 
-  .company-address, 
+  .company-address,
   .invoice-date {
     margin-top: -3px;
     display: block;

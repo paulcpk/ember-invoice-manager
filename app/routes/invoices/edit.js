@@ -10,17 +10,26 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    save(changeset) {
-      return changeset.save();
+    willTransition(transition) {
+      if (!confirm('Are you sure you want to leave? Your changes will be lost.')) {
+        transition.abort();
+      } else {
+        return true;
+      }
+    },
+    
+    save(model) {
+      return model.save();
     },
 
-    cancel(changeset) {
-      changeset.rollback();
+    cancel(model) {
+      model.rollback();
       return this.transitionTo('invoices');
     },
 
     delete(record) {
       this.send('deleteInvoice', record);
+      return this.transitionTo('invoices');
     }
   }
 });

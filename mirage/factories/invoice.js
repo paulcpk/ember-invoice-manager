@@ -20,7 +20,7 @@ export default Factory.extend({
 	paymentDueDate(i) {
 		return (i % 3) === 0 ? faker.date.recent() : faker.date.future();
 	},
-	taxRate: 20,
+	taxRate: 8.5,
 	discountRate: 0,
 	total: faker.finance.amount,
 	totalAfterTax: faker.finance.amount,

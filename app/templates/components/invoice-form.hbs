@@ -13,8 +13,8 @@
                 {{#power-select
                   options=statusList
                   searchEnabled=false
-                  selected=changeset.status
-                  onchange=(action (mut changeset.status))
+                  selected=model.status
+                  onchange=(action (mut model.status))
                   class="invoice-status-select"
                   as |status|
                 }}
@@ -25,29 +25,29 @@
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="invoiceNumber">Invoice Number</label>
-                {{input type="text" name="invoiceNumber" value=changeset.invoiceNumber size="100" class="form-control"}}
+                {{input type="text" name="invoiceNumber" value=model.invoiceNumber size="100" class="form-control"}}
               </div>
             </div>
           </div>
           <div class="form-group">
             <label for="senderAddress">Sender Address</label>
-            {{textarea name="senderAddress" value=changeset.senderAddress cols="80" rows="3" class="form-control"}}
+            {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
           </div>
           <div class="form-group">
             <label for="recipientAddress">Recipient Address</label>
-            {{textarea name="recipientAddress" value=changeset.recipientAddress cols="80" rows="3" class="form-control"}}
+            {{textarea name="recipientAddress" value=model.recipientAddress cols="80" rows="3" class="form-control"}}
           </div>
           <div class="row">
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="issuedDate">Invoice Date</label>
-                {{bootstrap-datepicker value=changeset.issuedDate autoclose=true name="issuedDate" class="form-control" format="dd-mm-yyyy"}}
+                {{bootstrap-datepicker value=model.issuedDate autoclose=true name="issuedDate" class="form-control" format="dd-mm-yyyy"}}
               </div>
             </div>
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="paymentDueDate">Due Date</label>
-                {{bootstrap-datepicker value=changeset.paymentDueDate autoclose=true name="paymentDueDate" class="form-control" format="dd-mm-yyyy"}}
+                {{bootstrap-datepicker value=model.paymentDueDate autoclose=true name="paymentDueDate" class="form-control" format="dd-mm-yyyy"}}
               </div>
             </div>
           </div>
@@ -55,13 +55,13 @@
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="serviceFromDate">Service From</label>
-                {{bootstrap-datepicker value=changeset.serviceFromDate autoclose=true name="serviceFromDate" class="form-control" format="dd-mm-yyyy"}}
+                {{bootstrap-datepicker value=model.serviceFromDate autoclose=true name="serviceFromDate" class="form-control" format="dd-mm-yyyy"}}
               </div>
             </div>
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="serviceToDate">Service To</label>
-                {{bootstrap-datepicker value=changeset.serviceToDate autoclose=true name="serviceToDate" class="form-control" format="dd-mm-yyyy"}}
+                {{bootstrap-datepicker value=model.serviceToDate autoclose=true name="serviceToDate" class="form-control" format="dd-mm-yyyy"}}
               </div>
             </div>
           </div>
@@ -69,28 +69,28 @@
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="currency">Invoice Currency</label>
-                {{input type="text" name="currency" value=changeset.currency size="20" class="form-control"}}
+                {{input type="text" name="currency" value=model.currency size="20" class="form-control"}}
               </div>
             </div>
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="taxRate">Tax Rate</label>
-                {{input type="number" name="taxRate" value=changeset.taxRate size="20" class="form-control"}}
+                {{input type="number" name="taxRate" value=model.taxRate size="20" class="form-control"}}
               </div>
             </div>
           </div>
           <div class="form-group">
             <label for="invoiceTerms">Invoice Terms</label>
-            {{textarea name="invoiceTerms" value=changeset.invoiceTerms cols="80" rows="3" class="form-control"}}
+            {{textarea name="invoiceTerms" value=model.invoiceTerms cols="80" rows="3" class="form-control"}}
           </div>
           <div class="form-group">
             <label for="personalData">Personal Data</label>
-            {{textarea name="personalData" value=changeset.personalData cols="80" rows="3" class="form-control"}}
+            {{textarea name="personalData" value=model.personalData cols="80" rows="3" class="form-control"}}
           </div>
         </div>
         <div class="panel-footer">            
-          <button class="btn btn-success" {{action (route-action "save" changeset)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-          <button class="btn btn-default" {{action (route-action "cancel" changeset)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+          <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+          <button class="btn btn-default" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
           {{#if isEditRoute}}
             <button class="btn btn-danger pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
           {{/if}}
@@ -113,17 +113,48 @@
               </tr>
             </thead>
             <tbody>
-              {{#each changeset.invoiceItems as |item|}}
-                {{invoice-form-item model=item currency=changeset.currency deleteItem=(action "deleteItem")}}
+              {{#each model.invoiceItems as |item|}}
+                {{invoice-form-item model=item currency=model.currency deleteItem=(action "deleteItem")}}
+              {{else}}
+                <tr class="invoice-item">
+                  <td class="invoice-item-description">No items yet.</td>
+                  <td class="invoice-item-amount"></td>
+                  <td class="invoice-item-add-remove"></td>
+                </tr>
               {{/each}}
             </tbody>
             <tfoot>
               <tr>
                 <td>{{input type="text" name="invoiceNumber" value=newItemDescription size="100" class="form-control" placeholder="Add new item"}}</td>
                 <td>{{input type="text" name="invoiceNumber" value=newItemAmount size="100" class="form-control" placeholder="Add amount"}}</td>
-                <td><button class="btn btn-primary btn-xs" {{action "createItem" changeset}}><i class="fa fa-plus"></i></button></td>
+                <td><button class="btn btn-primary btn-xs" {{action "createItem" model}}><i class="fa fa-plus"></i></button></td>
               </tr>
             </tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="panel panel-default invoice-item-list">
+        <div class="panel-heading">
+          <h3 class="panel-title"><i class="fa fa-list"></i> Total List</h3>
+        </div>
+        <div class="panel-body">
+          <table class="table total-list">
+            <tbody>
+              {{#if model.taxRate}}
+                <tr>
+                  <td>Subtotal:</td>
+                  <td>{{model.subTotal}}&nbsp;{{model.currency}}</td>
+                </tr>
+                <tr>
+                  <td>Tax ({{model.taxRate}}%)</td>
+                  <td>{{model.taxAmount}}&nbsp;{{model.currency}}</td>
+                </tr>
+              {{/if}}
+              <tr>
+                <td>Total</td>
+                <td><b>{{model.total}}&nbsp;{{model.currency}}</b></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

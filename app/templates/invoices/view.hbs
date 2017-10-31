@@ -66,7 +66,7 @@
               {{#if model.taxRate}}
                 <tr>
                   <td>Subtotal</td>
-                  <td>{{model.total}}&nbsp;{{model.currency}}</td>
+                  <td>{{model.subTotal}}&nbsp;{{model.currency}}</td>
                 </tr>
                 <tr>
                   <td>Tax ({{model.taxRate}}%)</td>
@@ -75,7 +75,7 @@
               {{/if}}
               <tr class="sum-total">
                 <td>Total</td>
-                <td><b>{{model.totalAfterTax}}&nbsp;{{model.currency}}</b></td>
+                <td><b>{{model.total}}&nbsp;{{model.currency}}</b></td>
               </tr>
             </tfoot>
           </table>

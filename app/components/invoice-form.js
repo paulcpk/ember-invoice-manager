@@ -12,7 +12,7 @@ export default Component.extend({
 
   actions: {
     createItem() {
-      const { newItemDescription, newItemAmount } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
+      const { newItemDescription, newItemAmount, model } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
       
       const record = {
         amount: newItemAmount,
@@ -24,17 +24,16 @@ export default Component.extend({
         'newItemAmount': ''
       });
 
-      let changeset = this.get('changeset');
-      const invoiceItems = changeset.get('invoiceItems').toArray().addObject(record);
-      return changeset.set('invoiceItems', invoiceItems);
+      const invoiceItems = model.get('invoiceItems').toArray().addObject(record);
+      return model.set('invoiceItems', invoiceItems);
     },
 
     deleteItem(record) {
-      let changeset = this.get('changeset');
+      let model = this.get('model');
       
       // remove target item from hasMany relationship
-      const invoiceItems = changeset.get('invoiceItems').toArray().removeObject(record);
-      return changeset.set('invoiceItems', invoiceItems);
+      const invoiceItems = model.get('invoiceItems').toArray().removeObject(record);
+      return model.set('invoiceItems', invoiceItems);
     }
   }
 });

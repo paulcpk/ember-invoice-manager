@@ -11,17 +11,28 @@ export default Ember.Route.extend({
       'paymentDueDate': moment().add(1, 'month').toDate()
     });
   },
-
+  
   renderTemplate() {
     this.render('invoices/form');
   },
-
+  
   actions: {
-    save(changeset) {
-      return changeset.save();
+    willTransition(transition) {
+      if(transition.intent.name !== 'invoices.edit') {
+        if (!confirm('Are you sure you want to leave? Your changes will be lost.')) {
+          transition.abort();
+        }
+      } else {
+        return true;
+      }
     },
 
-    cancel() {
+    save(model) {
+      model.save().then(() => this.transitionTo('invoices.edit', model))
+    },
+
+    cancel(model) {
+      model.destroyRecord();
       return this.transitionTo('invoices');
     }
   }

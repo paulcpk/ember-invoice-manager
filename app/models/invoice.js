@@ -49,17 +49,18 @@ export default Model.extend(ModelMixin, {
 	statusStyle: computed('status', function() {
 		return getStyleClassByStatus(this.get('status'));
 	}),
-	total: computed('invoiceItems', function() {
+	subTotal: computed('invoiceItems', function() {
 		return this.get('invoiceItems').reduce((sum, item) => {
 				return sum + parseFloat(item.amount);
 		}, 0).toFixed(2);
 	}),
-	taxAmount: computed('taxRate', 'total', function() {
-		const { taxRate, total } = this.getProperties('taxRate', 'total');
+	taxAmount: computed('taxRate', 'subTotal', function() {
+		const { taxRate, subTotal } = this.getProperties('taxRate', 'subTotal');
 		const taxMultiplicator = taxRate / 100;
-		return (total * taxMultiplicator).toFixed(2);
+		return (subTotal * taxMultiplicator).toFixed(2);
 	}),
-	totalAfterTax: computed('total', 'taxAmount', function() {
-		return (parseFloat(this.get('total')) + parseFloat(this.get('taxAmount'))).toFixed(2);
+	total: computed('subTotal', 'taxAmount', function() {
+		const total = (parseFloat(this.get('subTotal')) + parseFloat(this.get('taxAmount')));
+		return total ? total.toFixed(2) : parseFloat(0).toFixed(2);
 	})
 });
