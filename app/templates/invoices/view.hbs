@@ -58,14 +58,24 @@
               {{#each model.invoiceItems as |item|}}
               <tr>
                 <td>{{item.description}}</td>
-                <td>{{item.amount}} {{model.currency}}</td>
+                <td>{{item.amount}}&nbsp;{{model.currency}}</td>
               </tr>
               {{/each}}
             </tbody>
             <tfoot>
+              {{#if model.taxRate}}
+                <tr>
+                  <td>Subtotal</td>
+                  <td>{{model.total}}&nbsp;{{model.currency}}</td>
+                </tr>
+                <tr>
+                  <td>Tax ({{model.taxRate}}%)</td>
+                  <td>{{model.taxAmount}}&nbsp;{{model.currency}}</td>
+                </tr>
+              {{/if}}
               <tr class="sum-total">
                 <td>Total</td>
-                <td><b>{{model.total}} {{model.currency}}</b></td>
+                <td><b>{{model.totalAfterTax}}&nbsp;{{model.currency}}</b></td>
               </tr>
             </tfoot>
           </table>
