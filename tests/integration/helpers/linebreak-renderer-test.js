@@ -8,10 +8,10 @@ moduleForComponent('linebreak-renderer', 'helper:linebreak-renderer', {
 
 // Replace this with your real tests.
 test('it renders', function(assert) {
-  this.set('inputValue', '1234');
+  this.set('inputValue', 'Here is some text \n with a linebreak.');
 
   this.render(hbs`{{linebreak-renderer inputValue}}`);
 
-  assert.equal(this.$().text().trim(), '1234');
+  assert.equal(this.$().html(), 'Here is some text <br> with a linebreak.');
 });
 
