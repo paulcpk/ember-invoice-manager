@@ -9,6 +9,7 @@ export default Component.extend({
   statusList: statusList,
   newItemDescription: '',
   newItemAmount: '',
+  isProcessing: false,
 
   actions: {
     createItem() {

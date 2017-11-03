@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  isEditRoute: true
+  isEditRoute: true,
+  isProcessing: false
 });

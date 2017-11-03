@@ -28,7 +28,13 @@ export default Ember.Route.extend({
     },
 
     save(model) {
-      model.save().then(() => this.transitionTo('invoices.edit', model))
+      this.controller.set('isProcessing', true);
+      model.save().then(() => {
+        Ember.run.later((() => {
+          this.controller.set('isProcessing', false);
+          this.transitionTo('invoices');
+        }), 300);
+      });
     },
 
     cancel(model) {
