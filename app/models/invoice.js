@@ -27,8 +27,6 @@ export default Model.extend(ModelMixin, {
 	invoiceNumber: attr('string'),
 	senderAddress: attr('string'),
 	recipientAddress: attr('string'),
-	createdAt: attr('isodate'),
-	editedAt: attr('isodate'),
 	issuedDate: attr('isodate'),
 	serviceFromDate: attr('isodate'),
 	serviceToDate: attr('isodate'),
