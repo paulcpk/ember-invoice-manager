@@ -2,9 +2,11 @@
   <header id="header" class="container">
     <div class="row">
       <div class="col-xs-6">
-        {{!-- <div class="logo">
-          <img src="dist/images/logo_webcascade.svg" alt="webcascade" height="120" width="103">
-        </div> --}}
+        {{#if model.logo}}
+        <div class="logo">
+          <img src={{model.logo}} alt="webcascade" style="height: 120px; width: auto;">
+        </div>
+        {{/if}}
         <span class="company-address">
             {{linebreak-renderer model.senderAddress}}
         </span>
@@ -87,13 +89,13 @@
       <div class="col-xs-5">
         <h4>Terms</h4>
         <span class="data-box">
-          {{model.invoiceTerms}}
+          {{linebreak-renderer model.invoiceTerms}}
         </span>
       </div>
       <div class="col-xs-6 col-xs-offset-1">
         <h4>Thank you</h4>
         <span class="data-box">
-          {{model.personalData}}
+          {{linebreak-renderer model.personalData}}
         </span>
       </div>
     </div>
