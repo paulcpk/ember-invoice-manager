@@ -1,9 +1,7 @@
 import Ember from 'ember';
 import { statusList } from 'ember-invoice-manager/models/invoice';
-import { task } from 'ember-concurrency';
 
 const { Component, inject } = Ember;
-const { get, set } = Ember;
 
 export default Component.extend({
   store: inject.service('store'),

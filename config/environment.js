@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  const useDb = true;
+  const useDb = false;
   
   let ENV = {
     useDb,

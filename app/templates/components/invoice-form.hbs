@@ -121,7 +121,7 @@
           </div>
         </div>
         <div class="panel-footer">
-          {{#if isProcessing "is-processing"}}      
+          {{#if isProcessing}}      
             <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
           {{else}}
             <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
