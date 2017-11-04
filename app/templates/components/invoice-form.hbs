@@ -7,6 +7,38 @@
         </div>
         <div class="panel-body">
           <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <label for="">Logo</label>
+                {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
+                  {{#if dropzone.active}}
+                    {{#if dropzone.valid}}
+                      Drop to upload
+                    {{else}}
+                      Invalid
+                    {{/if}}
+                  {{else if queue.files.length}}
+                    Uploading {{queue.files.length}} file. ({{queue.progress}}%)
+                  {{else}}
+                    <span class="image-dropzone-description">
+                      {{#if dropzone.supported}}
+                        <p>
+                          Drop a logo into this area or
+                        </p>
+                      {{/if}}
+                      {{#file-upload name="logo"
+                                    accept="image/*"
+                                    multiple=false
+                                    onfileadd=(action "uploadImage")}}
+                        <a id="upload-image" tabindex=0 class="btn btn-primary">Add an Image</a>
+                      {{/file-upload}}
+                    </span>
+                  {{/if}}
+                {{/file-dropzone}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="status">Status</label>

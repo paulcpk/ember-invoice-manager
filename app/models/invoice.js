@@ -22,6 +22,7 @@ export function getStyleClassByStatus(status) {
 }
 
 export default Model.extend(ModelMixin, {
+	logo: attr(),
 	status: attr('string'),
 	invoiceNumber: attr('string'),
 	senderAddress: attr('string'),

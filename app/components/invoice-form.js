@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import { statusList } from 'ember-invoice-manager/models/invoice';
+import { task } from 'ember-concurrency';
 
 const { Component, inject } = Ember;
+const { get, set } = Ember;
 
 export default Component.extend({
   store: inject.service('store'),
@@ -10,8 +12,12 @@ export default Component.extend({
   newItemDescription: '',
   newItemAmount: '',
   isProcessing: false,
-
+  
   actions: {
+    uploadImage(file) {
+      console.log(file);
+    },
+
     createItem() {
       const { newItemDescription, newItemAmount, model } = this.getProperties('newItemDescription', 'newItemAmount', 'model');
       
