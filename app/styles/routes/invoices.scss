@@ -38,6 +38,21 @@
     border-radius: 3px;
   }
 
+  .invoice-logo {
+    position: relative;
+
+    img {
+      height: 100px;
+      width: auto;
+    }
+
+    .btn {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
   .ember-power-select-trigger {
     height: 34px;
     line-height: 32px;

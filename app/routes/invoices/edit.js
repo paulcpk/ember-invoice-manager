@@ -25,12 +25,12 @@ export default Ember.Route.extend({
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
           this.transitionTo('invoices');
-        }), 300);
+        }), 200);
       });
     },
 
     cancel(model) {
-      model.rollback();
+      model.rollbackAttributes();
       return this.transitionTo('invoices');
     },
 

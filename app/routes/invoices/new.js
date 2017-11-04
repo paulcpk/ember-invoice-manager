@@ -33,7 +33,7 @@ export default Ember.Route.extend({
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
           this.transitionTo('invoices');
-        }), 300);
+        }), 200);
       });
     },
 

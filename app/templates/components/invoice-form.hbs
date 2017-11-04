@@ -11,16 +11,13 @@
               <div class="form-group">
                 <label for="">Logo</label>
                 {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
-                  {{#if dropzone.active}}
-                    {{#if dropzone.valid}}
-                      Drop to upload
+                  <span class="image-dropzone-description">
+                    {{#if model.logo}}
+                      <div class="invoice-logo">
+                        <img src={{model.logo}} alt="Invoice Logo">
+                        <button class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
+                      </div>
                     {{else}}
-                      Invalid
-                    {{/if}}
-                  {{else if queue.files.length}}
-                    Uploading {{queue.files.length}} file. ({{queue.progress}}%)
-                  {{else}}
-                    <span class="image-dropzone-description">
                       {{#if dropzone.supported}}
                         <p>
                           Drop a logo into this area or
@@ -29,11 +26,11 @@
                       {{#file-upload name="logo"
                                     accept="image/*"
                                     multiple=false
-                                    onfileadd=(action "uploadImage")}}
+                                    onfileadd=(action "uploadLogo")}}
                         <a id="upload-image" tabindex=0 class="btn btn-primary">Add an Image</a>
                       {{/file-upload}}
-                    </span>
-                  {{/if}}
+                    {{/if}}
+                  </span>
                 {{/file-dropzone}}
               </div>
             </div>

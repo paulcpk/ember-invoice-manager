@@ -12,8 +12,18 @@ export default Component.extend({
   isProcessing: false,
   
   actions: {
-    uploadImage(file) {
-      console.log(file);
+    uploadLogo(file) {
+      try {
+        file.readAsDataURL().then((url) => {
+          this.get('model').set('logo', url);
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+
+    deleteLogo() {
+      this.get('model').set('logo', null);
     },
 
     createItem() {
