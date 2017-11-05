@@ -35,6 +35,9 @@ export default Model.extend(ModelMixin, {
 	invoiceTerms: attr('string'),
 	personalData: attr('string'),
 	currency: attr('string'),
+	template: attr('string', {
+		defaultValue() { return 'default-custom';}
+	}),
 
 	invoiceItems: attr('', {
     defaultValue() { return Ember.A(); }
