@@ -44,6 +44,7 @@ export default Model.extend(ModelMixin, {
 	template: attr('string', {
 		defaultValue() { return 'default'; }
 	}),
+	isValidTaxRate: computed.gt('taxRate', 0),
 
 	invoiceItems: attr('', {
     defaultValue() { return Ember.A(); }
@@ -54,7 +55,6 @@ export default Model.extend(ModelMixin, {
 
 		return status === 'sent' && moment().isAfter(moment(paymentDueDate));
 	}),
-	isValidTaxRate: computed.gt('taxRate', 0),
 	statusStyle: computed('status', function() {
 		return getStyleClassByStatus(this.get('status'));
 	}),

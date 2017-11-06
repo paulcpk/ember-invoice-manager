@@ -1,1 +1,62 @@
-{{outlet}}
+{{header-navigation pageTitle="Settings"}}
+<div class="row">
+  <form class="invoice-settings col-xs-12">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="panel panel-default invoice-settings">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-gears"></i> Default Invoice Settings</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="senderAddress">Sender Address</label>
+                  {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="invoiceNumber">Invoice Number</label>
+                  {{input type="text" name="invoiceNumber" value=model.invoiceNumber size="100" class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="currency">Invoice Currency</label>
+                  {{input type="text" name="currency" value=model.currency size="20" class="form-control"}}
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="form-group">
+                  <label for="taxRate">Tax Rate</label>
+                  {{input type="number" name="taxRate" value=model.taxRate size="20" class="form-control"}}
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="invoiceTerms">Invoice Terms</label>
+              {{textarea name="invoiceTerms" value=model.invoiceTerms cols="80" rows="3" class="form-control"}}
+            </div>
+            <div class="form-group">
+              <label for="personalData">Personal Data</label>
+              {{textarea name="personalData" value=model.personalData cols="80" rows="3" class="form-control"}}
+            </div>
+          </div>
+          <div class="panel-footer">
+            {{#if isProcessing}}      
+              <button class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
+            {{else}}
+              <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+            {{/if}}
+            <button class="btn btn-default" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
