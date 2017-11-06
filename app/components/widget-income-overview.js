@@ -1,14 +1,12 @@
 import Ember from 'ember';
-import { getStyleClassByStatus } from 'ember-invoice-manager/models/invoice';
+import { getStyleClassByStatus, statusList } from 'ember-invoice-manager/models/invoice';
 
 const { computed, Component } = Ember;
 
 export function getTotalByStatus(model, status) {
   const filteredModel = model.filterBy('status', status);
 
-  return filteredModel.reduce(function(sum, item) {
-    return sum + item.get('total');
-  }, 0);
+  return filteredModel.length;
 }
 
 export default Component.extend({
@@ -18,22 +16,21 @@ export default Component.extend({
     this._super(...arguments);
   },
 
-  getTotalList: computed('model.@each.status', function() {
+  getInvoiceStats: computed('model.@each.status', function() {
     const model = this.get('model');
-    const statusList = model.mapBy('status').uniq();
-    let totalList = [];
+    let invoiceStats = [];
 
     statusList.map((status) => {
-      const total = getTotalByStatus(model, status);
+      const sum = getTotalByStatus(model, status);
       const style = getStyleClassByStatus(status);
 
-      totalList.push({
+      invoiceStats.push({
         'status': status,
-        'total': total,
+        'sum': sum,
         'style': style
       });
     });
 
-    return totalList;
+    return invoiceStats;
   })
 });

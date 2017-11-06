@@ -14,13 +14,13 @@ export const templateList = Object.keys(window.requirejs.entries)
 																return path.split('/').slice(-1)[0];
 															});
 
-export const statusList = ['draft', 'sent', 'paid'];
+export const statusList = ['paid', 'sent', 'draft'];
 
 export function getStyleClassByStatus(status) {
 	const styles = {
-		'draft': 'default',
-		'sent': 'primary',
 		'paid': 'success',
+		'sent': 'primary',
+		'draft': 'default',
 		'default': 'default'
 	};
 
