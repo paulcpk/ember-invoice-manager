@@ -21,6 +21,9 @@ export default Ember.Route.extend({
       if(transition.intent.name !== 'invoices.edit') {
         if (!confirm('Are you sure you want to leave? Your changes will be lost.')) {
           transition.abort();
+        } else {
+          // delete model if user navigates away
+          this.controller.get('model').destroyRecord();
         }
       } else {
         return true;
@@ -32,13 +35,12 @@ export default Ember.Route.extend({
       model.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
-          this.transitionTo('invoices');
+          this.transitionTo('invoices.edit');
         }), 200);
       });
     },
 
-    cancel(model) {
-      model.destroyRecord();
+    cancel() {
       return this.transitionTo('invoices');
     }
   }

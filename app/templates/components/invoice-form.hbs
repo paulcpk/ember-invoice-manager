@@ -9,6 +9,23 @@
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group">
+                <label for="status">Template</label>
+                {{#power-select
+                  options=templateList
+                  searchEnabled=false
+                  selected=model.template
+                  onchange=(action (mut model.template))
+                  class="invoice-template-select"
+                  as |template|
+                }}
+                  {{titleize template}}
+                {{/power-select}}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
                 <label for="">Logo</label>
                 {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
                   <span class="image-dropzone-description">

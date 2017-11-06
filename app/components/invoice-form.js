@@ -1,12 +1,14 @@
 import Ember from 'ember';
-import { statusList } from 'ember-invoice-manager/models/invoice';
+import { templateList, statusList } from 'ember-invoice-manager/models/invoice';
+console.log(templateList);
 
 const { Component, inject } = Ember;
 
 export default Component.extend({
   store: inject.service('store'),
   isEditRoute: false,
-  statusList: statusList,
+  statusList,
+  templateList,
   newItemDescription: '',
   newItemAmount: '',
   isProcessing: false,

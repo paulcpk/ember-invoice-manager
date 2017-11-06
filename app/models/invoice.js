@@ -8,6 +8,12 @@ const { Model, attr } = DS;
 const { computed } = Ember;
 const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
+export const templateList = Object.keys(window.requirejs.entries)
+															.filter((path) => path.includes('invoice-templates'))
+															.map((path) => {
+																return path.split('/').slice(-1)[0];
+															});
+
 export const statusList = ['draft', 'sent', 'paid'];
 
 export function getStyleClassByStatus(status) {
@@ -36,7 +42,7 @@ export default Model.extend(ModelMixin, {
 	personalData: attr('string'),
 	currency: attr('string'),
 	template: attr('string', {
-		defaultValue() { return 'default-custom';}
+		defaultValue() { return 'default'; }
 	}),
 
 	invoiceItems: attr('', {
