@@ -34,6 +34,8 @@ export default Model.extend(ModelMixin, {
 	senderAddress: attr('string'),
 	recipientAddress: attr('string'),
 	issuedDate: attr('isodate'),
+	createdDate: attr('isodate'),
+	editedDate: attr('isodate'),
 	serviceFromDate: attr('isodate'),
 	serviceToDate: attr('isodate'),
 	paymentDueDate: attr('isodate'),

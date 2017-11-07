@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import { templateList, statusList } from 'ember-invoice-manager/models/invoice';
-console.log(templateList);
 
 const { Component, inject } = Ember;
 

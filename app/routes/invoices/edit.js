@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Route.extend({
   model(params) {
@@ -21,6 +22,7 @@ export default Ember.Route.extend({
     
     save(model) {
       this.controller.set('isProcessing', true);
+      model.set('editedDate', moment().toDate());
       model.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
