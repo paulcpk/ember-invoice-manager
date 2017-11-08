@@ -13,6 +13,12 @@ module.exports = function(defaults) {
 
     'ember-cli-string-helpers': {
       only: ['truncate', 'titleize']
+    },
+
+    babel: {
+      plugins: [
+        ['transform-object-rest-spread']
+      ]
     }
   });
 
