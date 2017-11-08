@@ -9,4 +9,7 @@ export default function() {
   this.post('/invoices');
   this.patch('/invoices/:id');
   this.del('/invoices/:id');
+  
+  this.get('/users');
+  this.post('/users');
 }

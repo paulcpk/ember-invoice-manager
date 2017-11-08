@@ -1,8 +1,11 @@
 import DS from 'ember-data';
-const { Model, attr } = DS;
+import { LokiJSModelMixin } from 'ember-lokijs';
+import ENV from '../config/environment';
 
-export default Model.extend({
-  // logo: attr('string'),
+const { Model, attr } = DS;
+const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
+
+export default Model.extend(ModelMixin, {
   invoiceNumber: attr('string'),
   senderAddress: attr('string'),
   taxRate: attr('number'),
