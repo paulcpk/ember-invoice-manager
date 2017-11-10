@@ -1,213 +1,211 @@
-<form class="invoice-form col-xs-12">
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="panel panel-default invoice-settings">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-gears"></i> Invoice Settings</h3>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="status">Template</label>
-                {{#power-select
-                  options=templateList
-                  searchEnabled=false
-                  selected=model.template
-                  onchange=(action (mut model.template))
-                  class="invoice-template-select"
-                  as |template|
-                }}
-                  {{titleize template}}
-                {{/power-select}}
-              </div>
+<div class="row">
+  <div class="col-xs-5">
+    <div class="panel panel-default invoice-settings">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-gears"></i> Invoice Settings</h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="status">Template</label>
+              {{#power-select
+                options=templateList
+                searchEnabled=false
+                selected=model.template
+                onchange=(action (mut model.template))
+                class="invoice-template-select"
+                as |template|
+              }}
+                {{titleize template}}
+              {{/power-select}}
             </div>
           </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="form-group">
-                <label for="">Logo</label>
-                {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
-                  <span class="image-dropzone-description">
-                    {{#if model.logo}}
-                      <div class="invoice-logo">
-                        <img src={{model.logo}} alt="Invoice Logo">
-                        <button class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
-                      </div>
-                    {{else}}
-                      {{#if dropzone.supported}}
-                        <p>
-                          Drop a logo into this area or
-                        </p>
-                      {{/if}}
-                      {{#file-upload name="logo"
-                                    accept="image/*"
-                                    multiple=false
-                                    onfileadd=(action "uploadLogo")}}
-                        <a id="upload-image" tabindex=0 class="btn btn-primary">Add an Image</a>
-                      {{/file-upload}}
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="">Logo</label>
+              {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
+                <span class="image-dropzone-description">
+                  {{#if model.logo}}
+                    <div class="invoice-logo">
+                      <img src={{model.logo}} alt="Invoice Logo">
+                      <button class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
+                    </div>
+                  {{else}}
+                    {{#if dropzone.supported}}
+                      <p>
+                        Drop a logo into this area or
+                      </p>
                     {{/if}}
-                  </span>
-                {{/file-dropzone}}
-              </div>
+                    {{#file-upload name="logo"
+                                  accept="image/*"
+                                  multiple=false
+                                  onfileadd=(action "uploadLogo")}}
+                      <a id="upload-image" tabindex=0 class="btn btn-primary">Add an Image</a>
+                    {{/file-upload}}
+                  {{/if}}
+                </span>
+              {{/file-dropzone}}
             </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="status">Status</label>
-                {{#power-select
-                  options=statusList
-                  searchEnabled=false
-                  selected=model.status
-                  onchange=(action (mut model.status))
-                  class="invoice-status-select"
-                  as |status|
-                }}
-                  {{titleize status}}
-                {{/power-select}}
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="invoiceNumber">Invoice Number</label>
-                {{input type="text" name="invoiceNumber" value=model.invoiceNumber size="100" class="form-control"}}
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="senderAddress">Sender Address</label>
-            {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
-          </div>
-          <div class="form-group">
-            <label for="recipientAddress">Recipient Address</label>
-            {{textarea name="recipientAddress" value=model.recipientAddress cols="80" rows="3" class="form-control"}}
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="issuedDate">Invoice Date</label>
-                {{bootstrap-datepicker value=model.issuedDate autoclose=true name="issuedDate" class="form-control" format="dd-mm-yyyy"}}
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="paymentDueDate">Due Date</label>
-                {{bootstrap-datepicker value=model.paymentDueDate autoclose=true name="paymentDueDate" class="form-control" format="dd-mm-yyyy"}}
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="serviceFromDate">Service From</label>
-                {{bootstrap-datepicker value=model.serviceFromDate autoclose=true name="serviceFromDate" class="form-control" format="dd-mm-yyyy"}}
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="serviceToDate">Service To</label>
-                {{bootstrap-datepicker value=model.serviceToDate autoclose=true name="serviceToDate" class="form-control" format="dd-mm-yyyy"}}
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="currency">Invoice Currency</label>
-                {{input type="text" name="currency" value=model.currency size="20" class="form-control"}}
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="taxRate">Tax Rate</label>
-                {{input type="number" name="taxRate" value=model.taxRate size="20" class="form-control"}}
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="invoiceTerms">Invoice Terms</label>
-            {{textarea name="invoiceTerms" value=model.invoiceTerms cols="80" rows="3" class="form-control"}}
-          </div>
-          <div class="form-group">
-            <label for="personalData">Personal Data</label>
-            {{textarea name="personalData" value=model.personalData cols="80" rows="3" class="form-control"}}
           </div>
         </div>
-        <div class="panel-footer">
-          {{#if isProcessing}}      
-            <button class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
-          {{else}}
-            <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-          {{/if}}
-          <button class="btn btn-default" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
-          {{#if isEditRoute}}
-            <button class="btn btn-danger pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-          {{/if}}
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="status">Status</label>
+              {{#power-select
+                options=statusList
+                searchEnabled=false
+                selected=model.status
+                onchange=(action (mut model.status))
+                class="invoice-status-select"
+                as |status|
+              }}
+                {{titleize status}}
+              {{/power-select}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="invoiceNumber">Invoice Number</label>
+              {{input type="text" name="invoiceNumber" value=model.invoiceNumber size="100" class="form-control"}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="senderAddress">Sender Address</label>
+          {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label for="recipientAddress">Recipient Address</label>
+          {{textarea name="recipientAddress" value=model.recipientAddress cols="80" rows="3" class="form-control"}}
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="issuedDate">Invoice Date</label>
+              {{bootstrap-datepicker value=model.issuedDate autoclose=true name="issuedDate" class="form-control" format="dd-mm-yyyy"}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="paymentDueDate">Due Date</label>
+              {{bootstrap-datepicker value=model.paymentDueDate autoclose=true name="paymentDueDate" class="form-control" format="dd-mm-yyyy"}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="serviceFromDate">Service From</label>
+              {{bootstrap-datepicker value=model.serviceFromDate autoclose=true name="serviceFromDate" class="form-control" format="dd-mm-yyyy"}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="serviceToDate">Service To</label>
+              {{bootstrap-datepicker value=model.serviceToDate autoclose=true name="serviceToDate" class="form-control" format="dd-mm-yyyy"}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="currency">Invoice Currency</label>
+              {{input type="text" name="currency" value=model.currency size="20" class="form-control"}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <label for="taxRate">Tax Rate</label>
+              {{input type="number" name="taxRate" value=model.taxRate size="20" class="form-control"}}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="invoiceTerms">Invoice Terms</label>
+          {{textarea name="invoiceTerms" value=model.invoiceTerms cols="80" rows="3" class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label for="personalData">Personal Data</label>
+          {{textarea name="personalData" value=model.personalData cols="80" rows="3" class="form-control"}}
         </div>
       </div>
-    </div>
-
-    <div class="col-xs-7">
-      <div class="panel panel-default invoice-item-list">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-list"></i> Invoice Items</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table item-list">
-            <thead>
-              <tr>
-                <th class="invoice-item-description">Description</th>
-                <th class="invoice-item-amount">Amount</th>
-                <th class="invoice-item-add-remove">Add/Remove</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each model.invoiceItems as |item|}}
-                {{invoice-form-item model=item currency=model.currency deleteItem=(action "deleteItem")}}
-              {{else}}
-                <tr class="invoice-item">
-                  <td class="invoice-item-description">No items yet.</td>
-                  <td class="invoice-item-amount"></td>
-                  <td class="invoice-item-add-remove"></td>
-                </tr>
-              {{/each}}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>{{input type="text" name="invoiceNumber" value=newItemDescription size="100" class="form-control" placeholder="Add new item"}}</td>
-                <td>{{input type="text" name="invoiceNumber" value=newItemAmount size="100" class="form-control" placeholder="Add amount"}}</td>
-                <td><button class="btn btn-primary btn-xs" {{action "createItem" model}}><i class="fa fa-plus"></i></button></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-      <div class="panel panel-default invoice-item-list">
-        <div class="panel-heading">
-          <h3 class="panel-title"><i class="fa fa-list"></i> Total List</h3>
-        </div>
-        <div class="panel-body">
-          <table class="table total-list">
-            <tbody>
-              {{#if model.isValidTaxRate}}
-                <tr>
-                  <td>Subtotal:</td>
-                  <td>{{model.subTotal}}&nbsp;{{model.currency}}</td>
-                </tr>
-                <tr>
-                  <td>Tax ({{model.taxRate}}%)</td>
-                  <td>{{model.taxAmount}}&nbsp;{{model.currency}}</td>
-                </tr>
-              {{/if}}
-              <tr>
-                <td>Total</td>
-                <td><b>{{model.total}}&nbsp;{{model.currency}}</b></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="panel-footer">
+        {{#if isProcessing}}      
+          <button class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
+        {{else}}
+          <button class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+        {{/if}}
+        <button class="btn btn-default" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        {{#if isEditRoute}}
+          <button class="btn btn-danger pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+        {{/if}}
       </div>
     </div>
   </div>
-</form>
+
+  <div class="col-xs-7">
+    <div class="panel panel-default invoice-item-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> Invoice Items</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table item-list">
+          <thead>
+            <tr>
+              <th class="invoice-item-description">Description</th>
+              <th class="invoice-item-amount">Amount</th>
+              <th class="invoice-item-add-remove">Add/Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each model.invoiceItems as |item|}}
+              {{invoice-form-item model=item currency=model.currency deleteItem=(action "deleteItem")}}
+            {{else}}
+              <tr class="invoice-item">
+                <td class="invoice-item-description">No items yet.</td>
+                <td class="invoice-item-amount"></td>
+                <td class="invoice-item-add-remove"></td>
+              </tr>
+            {{/each}}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>{{input type="text" name="invoiceNumber" value=newItemDescription size="100" class="form-control" placeholder="Add new item" enter=(action "createItem" model)}}</td>
+              <td>{{input type="text" name="invoiceNumber" value=newItemAmount size="100" class="form-control" placeholder="Add amount" enter=(action "createItem" model)}}</td>
+              <td><button class="btn btn-primary btn-xs" {{action "createItem" model}}><i class="fa fa-plus"></i></button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <div class="panel panel-default invoice-item-list">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-list"></i> Total List</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table total-list">
+          <tbody>
+            {{#if model.isValidTaxRate}}
+              <tr>
+                <td>Subtotal:</td>
+                <td>{{model.subTotal}}&nbsp;{{model.currency}}</td>
+              </tr>
+              <tr>
+                <td>Tax ({{model.taxRate}}%)</td>
+                <td>{{model.taxAmount}}&nbsp;{{model.currency}}</td>
+              </tr>
+            {{/if}}
+            <tr>
+              <td>Total</td>
+              <td><b>{{model.total}}&nbsp;{{model.currency}}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

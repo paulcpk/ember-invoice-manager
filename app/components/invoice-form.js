@@ -1,16 +1,21 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 import { templateList, statusList } from 'ember-invoice-manager/models/invoice';
 
-const { Component, inject } = Ember;
-
 export default Component.extend({
-  store: inject.service('store'),
+  classNames: ['invoice-form col-xs-12'],
+  tagName: 'form',
+  store: service('store'),
   isEditRoute: false,
   statusList,
   templateList,
   newItemDescription: '',
   newItemAmount: '',
   isProcessing: false,
+
+  submit(e) {
+    console.log(e);
+  },
   
   actions: {
     uploadLogo(file) {

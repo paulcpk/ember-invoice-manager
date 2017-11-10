@@ -76,7 +76,6 @@ export default Ember.Route.extend({
       record.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
-          console.log('save');
           this.transitionTo('invoices.edit', record);
         }), 200);
       });

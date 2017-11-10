@@ -20,10 +20,10 @@ export default Ember.Route.extend({
       }
     },
     
-    save(model) {
+    save(record) {
       this.controller.set('isProcessing', true);
-      model.set('editedDate', moment().toDate());
-      model.save().then(() => {
+      record.set('editedDate', moment().toDate());
+      record.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
           this.transitionTo('invoices');
@@ -31,8 +31,8 @@ export default Ember.Route.extend({
       });
     },
 
-    cancel(model) {
-      model.rollbackAttributes();
+    cancel(record) {
+      record.rollbackAttributes();
       return this.transitionTo('invoices');
     },
 
