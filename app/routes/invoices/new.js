@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import moment from 'moment';
 
+import zeroPad from 'ember-invoice-manager/helpers/zero-pad';
+
 export default Ember.Route.extend({
   model() {
     return Ember.RSVP.hash({
@@ -19,6 +21,7 @@ export default Ember.Route.extend({
 
   afterModel(hash) {
     if (hash.settings.get('firstObject')) {  
+      // override invoice properties with settings
       const settings = hash.settings.get('firstObject').getProperties(
         'invoiceNumber',
         'senderAddress',
@@ -30,6 +33,18 @@ export default Ember.Route.extend({
 
       hash.model.setProperties({
         ...settings
+      });
+    }
+
+    if (hash.prevInvoice.get('lastObject')) {
+      // get invoice number of last invoice and increment it
+      const prevInvoiceNumber = hash.prevInvoice.get('lastObject').get('invoiceNumber');
+      const numberToIncrement = prevInvoiceNumber.match(/\d+$/)[0];
+      const increment = zeroPad(parseInt(numberToIncrement, 10) + 1, numberToIncrement.length);
+      const invoiceNumber = prevInvoiceNumber.replace(numberToIncrement, increment);
+      
+      hash.model.setProperties({
+        invoiceNumber
       });
     }
   },
@@ -61,7 +76,8 @@ export default Ember.Route.extend({
       record.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
-          this.transitionTo('invoices.edit');
+          console.log('save');
+          this.transitionTo('invoices.edit', record);
         }), 200);
       });
     },
