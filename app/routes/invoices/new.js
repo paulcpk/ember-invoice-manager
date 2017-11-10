@@ -18,9 +18,18 @@ export default Ember.Route.extend({
   },
 
   afterModel(hash) {
-    if (hash.settings.get('firstObject')) {      
+    if (hash.settings.get('firstObject')) {  
+      const settings = hash.settings.get('firstObject').getProperties(
+        'invoiceNumber',
+        'senderAddress',
+        'taxRate',
+        'invoiceTerms',
+        'personalData',
+        'currency'
+      );
+
       hash.model.setProperties({
-        ...hash.settings.get('firstObject')
+        ...settings
       });
     }
   },
@@ -47,9 +56,9 @@ export default Ember.Route.extend({
       }
     },
 
-    save(model) {
+    save(record) {
       this.controller.set('isProcessing', true);
-      model.save().then(() => {
+      record.save().then(() => {
         Ember.run.later((() => {
           this.controller.set('isProcessing', false);
           this.transitionTo('invoices.edit');

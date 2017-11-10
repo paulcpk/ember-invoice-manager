@@ -4,7 +4,6 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   model() {
 		return this.get('store').findAll('user').then((model) => {
-      console.log(model.get('length'));
       return model.get('length') ? model.get('firstObject') : this.get('store').createRecord('user', {});
     });
   },
