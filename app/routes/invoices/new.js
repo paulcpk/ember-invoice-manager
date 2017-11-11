@@ -37,9 +37,9 @@ export default Ember.Route.extend({
       });
     }
 
-    if (hash.prevInvoice.get('lastObject')) {
+    if (hash.prevInvoice.rejectBy('dirtyType', 'created').get('lastObject')) {
       // get invoice number of last invoice and increment it
-      const prevInvoiceNumber = hash.prevInvoice.get('lastObject').get('invoiceNumber');
+      const prevInvoiceNumber = hash.prevInvoice.rejectBy('dirtyType', 'created').get('lastObject').get('invoiceNumber');
       const numberToIncrement = prevInvoiceNumber.match(/\d+$/)[0];
       const increment = zeroPad(parseInt(numberToIncrement, 10) + 1, numberToIncrement.length);
       const invoiceNumber = prevInvoiceNumber.replace(numberToIncrement, increment);
