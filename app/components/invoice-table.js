@@ -10,7 +10,8 @@ export default Component.extend({
       template: "components/models-table/cell-label"
     }, {
       title: 'Invoice Nr.',
-      propertyName: 'invoiceNumber'
+      propertyName: 'invoiceNumber',
+      className: 'invoice-number'
     }, {
       title: 'Customer',
       propertyName: 'recipientAddress',
@@ -27,7 +28,8 @@ export default Component.extend({
     }, {
       title: 'Total',
       propertyName: 'total',
-      template: "components/models-table/cell-amount"
+      template: "components/models-table/cell-amount",
+      className: 'total'
     },{
       title: 'Edit',
       template: "components/models-table/button-edit"
