@@ -11,6 +11,35 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="form-group">
+                  <label for="">Logo</label>
+                  {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
+                    <span class="image-dropzone-description">
+                      {{#if model.logo}}
+                        <div class="invoice-logo">
+                          <img src={{model.logo}} alt="Invoice Logo">
+                          <button class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
+                        </div>
+                      {{else}}
+                        {{#if dropzone.supported}}
+                          <p>
+                            Drop a logo into this area or
+                          </p>
+                        {{/if}}
+                        {{#file-upload name="logo"
+                                      accept="image/*"
+                                      multiple=false
+                                      onfileadd=(action "uploadLogo")}}
+                          <a id="upload-image" tabindex=0 class="btn btn-primary">Add an Image</a>
+                        {{/file-upload}}
+                      {{/if}}
+                    </span>
+                  {{/file-dropzone}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
                   <label for="senderAddress">Sender Address</label>
                   {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
                 </div>

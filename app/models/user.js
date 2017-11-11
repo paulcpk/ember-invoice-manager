@@ -6,6 +6,7 @@ const { Model, attr } = DS;
 const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
 export default Model.extend(ModelMixin, {
+  logo: attr('string'),
   invoiceNumber: attr('string'),
   senderAddress: attr('string'),
   taxRate: attr('number'),

@@ -23,6 +23,7 @@ export default Ember.Route.extend({
     if (hash.settings.get('firstObject')) {  
       // override invoice properties with settings
       const settings = hash.settings.get('firstObject').getProperties(
+        'logo',
         'invoiceNumber',
         'senderAddress',
         'taxRate',
