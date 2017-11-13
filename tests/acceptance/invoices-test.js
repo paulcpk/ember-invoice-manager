@@ -21,3 +21,14 @@ test("I can view the invoices in the table", function(assert) {
     assert.equal(find('.table-footer .table-summary').text().trim(), 'Show 1 - 10 of 25' );
   });
 });
+
+test("I can click an invoice's edit button to be redirected", function(assert) {
+  server.createList('invoice', 25);
+  visit('/invoices');
+
+  click('.invoice-row .button-edit');
+
+  andThen(function() {
+    assert.equal(currentPath(), 'invoices.edit');
+  });
+});
