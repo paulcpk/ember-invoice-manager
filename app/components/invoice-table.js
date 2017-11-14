@@ -7,7 +7,7 @@ export default Component.extend({
     return [{
       title: 'Status',
       propertyName: 'status',
-      template: "components/models-table/cell-label"
+      template: 'components/models-table/cell-label'
     }, {
       title: 'Invoice Nr.',
       propertyName: 'invoiceNumber',
@@ -15,33 +15,34 @@ export default Component.extend({
     }, {
       title: 'Customer',
       propertyName: 'recipientAddress',
-      template: "components/models-table/cell-text"
+      template: 'components/models-table/cell-text',
+      className: 'recipient-address'
     }, {
       title: 'Issued',
       propertyName: 'issuedDate',
-      template: "components/models-table/cell-date"
+      template: 'components/models-table/cell-date'
     }, {
       title: 'Due',
       propertyName: 'paymentDueDate',
-      template: "components/models-table/cell-date",
+      template: 'components/models-table/cell-date',
       className: 'payment-due-date'
     }, {
       title: 'Total',
       propertyName: 'total',
-      template: "components/models-table/cell-amount",
+      template: 'components/models-table/cell-amount',
       className: 'total'
     },{
       title: 'Edit',
-      template: "components/models-table/button-edit",
+      template: 'components/models-table/button-edit',
       className: 'Edit'
     },{
       title: 'Delete',
-      template: "components/models-table/button-delete"
+      template: 'components/models-table/button-delete'
     },{
       title: 'Overdue',
       propertyName: 'isOverdue',
       isHidden: true,
-      template: "components/models-table/cell-boolean"
+      template: 'components/models-table/cell-boolean'
     }];
   }),
   

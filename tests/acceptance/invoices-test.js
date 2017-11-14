@@ -26,9 +26,19 @@ test("I can click an invoice's edit button to be redirected", function(assert) {
   server.createList('invoice', 25);
   visit('/invoices');
 
-  click('.invoice-row .button-edit');
-
+  click('.invoice-row:first-child .edit-button');
   andThen(function() {
     assert.equal(currentPath(), 'invoices.edit');
+  });
+});
+
+test("I can edit the invoice, save it and the changes will be reflected in the table", function(assert) {
+  server.createList('invoice', 1);
+  visit('/invoices/edit/1');
+  fillIn('textarea[name="recipientAddress"]', 'Donnie Darko');
+  click('.save-button');
+
+  andThen(() => { 
+    assert.equal(find('.invoice-row:first-child .recipient-address').text().trim(), 'Donnie Darko');
   });
 });

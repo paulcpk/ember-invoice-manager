@@ -135,13 +135,13 @@
       </div>
       <div class="panel-footer">
         {{#if isProcessing}}      
-          <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
+          <button type="button" class="btn btn-success save-button"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
         {{else}}
-          <button type="button" class="btn btn-success" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+          <button type="button" class="btn btn-success save-button" {{action (route-action "save" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
         {{/if}}
-        <button type="button" class="btn btn-default" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
+        <button type="button" class="btn btn-default cancel-button" {{action (route-action "cancel" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Cancel</button>
         {{#if isEditRoute}}
-          <button type="button" class="btn btn-danger pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+          <button type="button" class="btn btn-danger delete-button pull-right" {{action (route-action "delete" model)}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
         {{/if}}
       </div>
     </div>
