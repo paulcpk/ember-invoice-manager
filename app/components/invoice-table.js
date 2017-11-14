@@ -32,7 +32,8 @@ export default Component.extend({
       className: 'total'
     },{
       title: 'Edit',
-      template: "components/models-table/button-edit"
+      template: "components/models-table/button-edit",
+      className: 'Edit'
     },{
       title: 'Delete',
       template: "components/models-table/button-delete"
