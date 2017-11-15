@@ -12,4 +12,11 @@ export default function() {
   
   this.get('/users');
   this.post('/users');
+  this.patch('/users/:id');
+
+  this.get('/templates');
+  this.post('/templates');
+  this.post('/templates/:id');
+  this.patch('/templates/:id');
+  this.del('/templates/:id');
 }

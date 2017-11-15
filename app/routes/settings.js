@@ -1,11 +1,18 @@
 import Ember from 'ember';
-import Route from '@ember/routing/route';
 
-export default Route.extend({
+export default Ember.Route.extend({
   model() {
-		return this.get('store').findAll('user').then((model) => {
-      return model.get('length') ? model.get('firstObject') : this.get('store').createRecord('user', {});
+    return Ember.RSVP.hash({
+      templates: this.get('store').findAll('template'),
+      user: this.get('store').findAll('user').then((user) => {
+        return user.get('length') ? user.get('firstObject') : this.get('store').createRecord('user', {});
+      })
     });
+  },
+
+  setupController(controller, hash) {
+    controller.set('templates', hash.templates);
+    controller.set('user', hash.user);
   },
   
   actions: {
@@ -16,19 +23,6 @@ export default Route.extend({
       } else {
         return true;
       }
-    },
-    
-    save(model) {
-      this.controller.set('isProcessing', true);
-      model.save().then(() => {
-        Ember.run.later((() => {
-          this.controller.set('isProcessing', false);
-        }), 200);
-      });
-    },
-
-    cancel(model) {
-      model.rollbackAttributes();
     }
   }
 });
