@@ -42,3 +42,24 @@ test("I can edit the invoice, save it and the changes will be reflected in the t
     assert.equal(find('.invoice-row:first-child .recipient-address').text().trim(), 'Donnie Darko');
   });
 });
+
+test("I can click the 'New Invoice' button and will be redirected", function(assert) {
+  visit('/invoices/');
+  click('.new-invoice-button');
+
+  andThen(() => { 
+    assert.equal(currentPath(), 'invoices.new');
+  });
+});
+
+test("I can create a new invoice, save it and it will be visible in the table", function(assert) {
+  visit('/invoices/new');
+  fillIn('textarea[name="recipientAddress"]', 'Friedrich Nietzsche');
+  click('.save-button');
+
+  andThen(() => click('.invoices-link'));
+
+  andThen(() => { 
+    assert.equal(find('.invoice-row:first-child .recipient-address').text().trim(), 'Friedrich Nietzsche');
+  });
+});
