@@ -36,7 +36,7 @@ export default Controller.extend({
     createTemplate() {
       this.get('store').createRecord('template', {
         title: 'My new template',
-        markup: 'Put some HTML here'
+        markup: '// Put some HTML here'
       })
     },
 

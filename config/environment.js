@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  const useDb = true;
+  const useDb = false;
   
   let ENV = {
     useDb,
@@ -30,6 +30,11 @@ module.exports = function(environment) {
       'Open+Sans:300,400,700',
       'Montserrat:300,700'
     ],
+
+    // highlight.js settings
+    emberHighlightJs: {
+      style: 'monokai-sublime'
+    },
  
     // Set or update content security policies
     contentSecurityPolicy: {

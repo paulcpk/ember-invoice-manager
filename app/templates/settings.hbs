@@ -22,7 +22,7 @@
                       {{#if user.logo}}
                         <div class="invoice-logo">
                           <img src={{user.logo}} alt="Invoice Logo">
-                          <button class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
+                          <button type="button" class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
                         </div>
                       {{else}}
                         {{#if dropzone.supported}}
@@ -83,11 +83,11 @@
           </div>
           <div class="panel-footer">
             {{#if isProcessingSettings}}      
-              <button class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
+              <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
             {{else}}
-              <button class="btn btn-success" {{action "saveUser" user}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+              <button type="button" class="btn btn-success" {{action "saveUser" user}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
             {{/if}}
-            <button class="btn btn-default" {{action "rollbackUser" user}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
+            <button type="button" class="btn btn-default" {{action "rollbackUser" user}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
           </div>
         </div>
       </form>
@@ -99,45 +99,9 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-xs-12">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                  {{#each templates as |template|}}
-                    <div class="panel panel-default">
-                      <div class="panel-heading" role="tab" id="heading-{{template.id}}">
-                        <h4 class="panel-title">
-                          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{template.is}}" aria-expanded="true" aria-controls="collapse-{{template.is}}" class="btn btn-primary btn-xs">
-                            <i class="fa fa-minus"></i>
-                          </a>
-                          <h4>
-                            {{template.title}}
-                          </h4>
-                        </h4>
-                      </div>
-                      <div id="collapse-{{template.is}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-{{template.id}}">
-                        <div class="panel-body">
-                          <div class="row">
-                            <div class="col-xs-12">
-                              <div class="form-group">
-                                <label for="title">Template Title</label>
-                                {{input type="text" name="title" value=template.title size="20" class="form-control"}}
-                              </div>
-                              <div class="form-group">
-                                <label for="markup">Template Markup</label>
-                                {{textarea name="markup" value=template.markup cols="80" rows="3" class="form-control"}}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="panel-footer">
-                        {{#if isProcessingTemplates}}      
-                          <button class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
-                        {{else}}
-                          <button class="btn btn-success" {{action "saveTemplate" template}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
-                        {{/if}}
-                        <button class="btn btn-default" {{action "rollbackTemplate" template}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
-                        <button type="button" class="btn btn-danger delete-button pull-right" {{action "deleteTemplate" template}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
-                      </div>
-                    </div>
+                <div class="panel-group template-list" role="tablist" aria-multiselectable="true">
+                  {{#each templates as |template index|}}
+                    {{template-tab isProcessing=isProcessingTemplates template=template index=index isOpen=(if (eq index 0) true) saveTemplate=(action "saveTemplate") rollbackTemplate=(action "rollbackTemplate") deleteTemplate=(action "deleteTemplate")}}
                   {{else}}
                     <p>No templates available.</p>
                   {{/each}}
@@ -146,7 +110,7 @@
             </div>
           </div>
           <div class="panel-footer">
-            <button class="btn btn-default" {{action "createTemplate"}}><i class="fa fa-plus" aria-hidden="true"></i> Add new template</button>
+            <button type="button" class="btn btn-default" {{action "createTemplate"}}><i class="fa fa-plus" aria-hidden="true"></i> Add new template</button>
           </div>
         </div>
       </form>

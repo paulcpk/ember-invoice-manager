@@ -1,0 +1,39 @@
+<div class="panel-heading" role="tab" id="heading" {{action "toggleTab"}}>
+  <a role="button" class="btn btn-primary btn-xs collapse-button">
+    {{#if isOpen}}
+      <i class="fa fa-minus"></i>
+    {{else}}
+      <i class="fa fa-plus"></i>
+    {{/if}}
+  </a>
+  <h4 class="panel-title">
+    <h4>
+      {{template.title}}
+    </h4>
+  </h4>
+</div>
+<div id="collapse" class="panel-collapse collapse {{if isOpen "in" }}" role="tabpanel" aria-labelledby="heading">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <label for="title">Template Title</label>
+          {{input type="text" name="title" value=template.title size="20" class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label for="markup">Template Code</label>
+          {{ivy-codemirror isVisible=isOpen options=(hash lineNumbers=true mode="html") value=template.markup valueUpdated=(action (mut template.markup))}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    {{#if isProcessing}}      
+      <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
+    {{else}}
+      <button type="button" class="btn btn-success" {{action saveTemplate template}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+    {{/if}}
+    <button type="button" class="btn btn-default" {{action rollbackTemplate template}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
+    <button type="button" type="button" class="btn btn-danger delete-button pull-right" {{action deleteTemplate template}}><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+  </div>
+</div>
