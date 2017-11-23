@@ -8,6 +8,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       prevInvoice: this.get('store').findAll('invoice'),
       settings: this.get('store').findAll('user'),
+      template: this.get('store').findAll('template'),
       model: this.get('store').createRecord('invoice', {
         'status': 'draft',
         'issuedDate': moment().toDate(),

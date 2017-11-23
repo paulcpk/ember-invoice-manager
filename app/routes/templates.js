@@ -1,12 +1,10 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
+export default Route.extend({
   model() {
-    return this.get('store').findAll('user').then((user) => {
-        return user.get('length') ? user.get('firstObject') : this.get('store').createRecord('user', {});
-    });
+    return this.get('store').findAll('template')
   },
-
+  
   actions: {
     willTransition(transition) {
       if (this.get('controller.model.hasDirtyAttributes') && 

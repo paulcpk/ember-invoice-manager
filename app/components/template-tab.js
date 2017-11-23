@@ -5,6 +5,7 @@ export default Component.extend({
   templateListStatus: service(),
   classNames: ['panel panel-default template-tab'],
   classNameBindings: ['isOpen'],
+  tagName: 'form',
   isOpen: false,
   index: null,
   isProcessing: false,
@@ -12,6 +13,7 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.get('templateListStatus').on('toggle', this, 'compareServiceValues');
+    this.send('toggleTab');
   },
   
   willDestroyElement() {

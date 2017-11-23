@@ -18,10 +18,12 @@
 // route styles
 @import 'routes/dashboard';
 @import 'routes/invoices';
+@import 'routes/templates';
 @import 'routes/settings';
+
 @import 'ember-power-select';
 
 // print styles
 @import 'print';
 
-@import "ember-power-select";
+@import 'ember-power-select';

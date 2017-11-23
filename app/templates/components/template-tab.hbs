@@ -20,7 +20,7 @@
           <label for="title">Template Title</label>
           {{input type="text" name="title" value=template.title size="20" class="form-control"}}
         </div>
-        <div class="form-group">
+        <div class="form-group markup-container">
           <label for="markup">Template Code</label>
           {{ivy-codemirror isVisible=isOpen options=(hash lineNumbers=true mode="html") value=template.markup valueUpdated=(action (mut template.markup))}}
         </div>

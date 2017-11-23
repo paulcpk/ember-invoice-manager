@@ -1,0 +1,30 @@
+{{header-navigation pageTitle="Invoice Templates"}}
+<div class="row">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="invoice-template-settings col-xs-12">
+        <div class="panel panel-default invoice-template-settings">
+          <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-files-o"></i> Invoice Templates</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="panel-group template-list" role="tablist" aria-multiselectable="true">
+                  {{#each model as |template index|}}
+                    {{template-tab isProcessing=isProcessing template=template index=index saveTemplate=(action "saveTemplate") rollbackTemplate=(action "rollbackTemplate") deleteTemplate=(action "deleteTemplate")}}
+                  {{else}}
+                    <p>No templates available.</p>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default" {{action "createTemplate"}}><i class="fa fa-plus" aria-hidden="true"></i> Add new template</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

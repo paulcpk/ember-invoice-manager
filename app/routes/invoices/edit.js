@@ -3,7 +3,14 @@ import moment from 'moment';
 
 export default Ember.Route.extend({
   model(params) {
-    return this.get('store').findRecord('invoice', params.invoice_id);
+    return Ember.RSVP.hash({
+      templates: this.get('store').findAll('template'),
+      model: this.get('store').findRecord('invoice', params.invoice_id)
+    });
+  },
+
+  setupController(controller, hash) {
+    controller.set('model', hash.model);
   },
 
   renderTemplate() {

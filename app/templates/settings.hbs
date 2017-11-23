@@ -19,9 +19,9 @@
                   <label for="">Logo</label>
                   {{#file-dropzone class="image-dropzone" name="logo" as |dropzone queue|}}
                     <span class="image-dropzone-description">
-                      {{#if user.logo}}
+                      {{#if model.logo}}
                         <div class="invoice-logo">
-                          <img src={{user.logo}} alt="Invoice Logo">
+                          <img src={{model.logo}} alt="Invoice Logo">
                           <button type="button" class="btn btn-danger" {{action "deleteLogo"}}><i class="fa fa-trash-o fa-lg"></i></button>
                         </div>
                       {{else}}
@@ -46,7 +46,7 @@
               <div class="col-xs-12">
                 <div class="form-group">
                   <label for="senderAddress">Sender Address</label>
-                  {{textarea name="senderAddress" value=user.senderAddress cols="80" rows="3" class="form-control"}}
+                  {{textarea name="senderAddress" value=model.senderAddress cols="80" rows="3" class="form-control"}}
                 </div>
               </div>
             </div>
@@ -54,7 +54,7 @@
               <div class="col-xs-6">
                 <div class="form-group">
                   <label for="invoiceNumber">Invoice Number</label>
-                  {{input type="text" name="invoiceNumber" value=user.invoiceNumber size="100" class="form-control"}}
+                  {{input type="text" name="invoiceNumber" value=model.invoiceNumber size="100" class="form-control"}}
                 </div>
               </div>
             </div>
@@ -62,55 +62,32 @@
               <div class="col-xs-6">
                 <div class="form-group">
                   <label for="currency">Invoice Currency</label>
-                  {{input type="text" name="currency" value=user.currency size="20" class="form-control"}}
+                  {{input type="text" name="currency" value=model.currency size="20" class="form-control"}}
                 </div>
               </div>
               <div class="col-xs-6">
                 <div class="form-group">
                   <label for="taxRate">Tax Rate</label>
-                  {{input type="number" name="taxRate" value=user.taxRate size="20" class="form-control"}}
+                  {{input type="number" name="taxRate" value=model.taxRate size="20" class="form-control"}}
                 </div>
               </div>
             </div>
             <div class="form-group">
               <label for="invoiceTerms">Invoice Terms</label>
-              {{textarea name="invoiceTerms" value=user.invoiceTerms cols="80" rows="3" class="form-control"}}
+              {{textarea name="invoiceTerms" value=model.invoiceTerms cols="80" rows="3" class="form-control"}}
             </div>
             <div class="form-group">
               <label for="personalData">Personal Data</label>
-              {{textarea name="personalData" value=user.personalData cols="80" rows="3" class="form-control"}}
+              {{textarea name="personalData" value=model.personalData cols="80" rows="3" class="form-control"}}
             </div>
           </div>
           <div class="panel-footer">
-            {{#if isProcessingSettings}}      
+            {{#if isProcessing}}      
               <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
             {{else}}
               <button type="button" class="btn btn-success" {{action "saveUser" user}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
             {{/if}}
             <button type="button" class="btn btn-default" {{action "rollbackUser" user}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
-          </div>
-        </div>
-      </form>
-      <form class="invoice-template-settings col-xs-7">
-        <div class="panel panel-default invoice-template-settings">
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-files-o"></i> Invoice Templates</h3>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="panel-group template-list" role="tablist" aria-multiselectable="true">
-                  {{#each templates as |template index|}}
-                    {{template-tab isProcessing=isProcessingTemplates template=template index=index isOpen=(if (eq index 0) true) saveTemplate=(action "saveTemplate") rollbackTemplate=(action "rollbackTemplate") deleteTemplate=(action "deleteTemplate")}}
-                  {{else}}
-                    <p>No templates available.</p>
-                  {{/each}}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <button type="button" class="btn btn-default" {{action "createTemplate"}}><i class="fa fa-plus" aria-hidden="true"></i> Add new template</button>
           </div>
         </div>
       </form>
