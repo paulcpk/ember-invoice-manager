@@ -8,8 +8,8 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       prevInvoice: this.get('store').findAll('invoice'),
       settings: this.get('store').findAll('user'),
-      template: this.get('store').findAll('template'),
-      model: this.get('store').createRecord('invoice', {
+      templates: this.get('store').findAll('template'),
+      invoice: this.get('store').createRecord('invoice', {
         'status': 'draft',
         'issuedDate': moment().toDate(),
         'createdDate': moment().toDate(),
@@ -33,7 +33,7 @@ export default Ember.Route.extend({
         'currency'
       );
 
-      hash.model.setProperties({
+      hash.invoice.setProperties({
         ...settings
       });
     }
@@ -45,14 +45,15 @@ export default Ember.Route.extend({
       const increment = zeroPad(parseInt(numberToIncrement, 10) + 1, numberToIncrement.length);
       const invoiceNumber = prevInvoiceNumber.replace(numberToIncrement, increment);
       
-      hash.model.setProperties({
+      hash.invoice.setProperties({
         invoiceNumber
       });
     }
   },
 
   setupController(controller, hash) {
-    controller.set('model', hash.model);
+    controller.set('invoice', hash.invoice);
+    controller.set('templates', hash.templates);
   },
   
   renderTemplate() {
@@ -65,8 +66,8 @@ export default Ember.Route.extend({
         if (!confirm('Are you sure you want to leave? Your changes will be lost.')) {
           transition.abort();
         } else {
-          // delete model if user navigates away
-          this.controller.get('model').destroyRecord();
+          // delete invoice record if user navigates away
+          this.controller.get('invoice').destroyRecord();
         }
       } else {
         return true;

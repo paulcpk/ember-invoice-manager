@@ -7,7 +7,7 @@ export default Ember.Route.extend({
 
 	actions: {
 		editInvoice(record) {
-			this.transitionTo('invoices.edit', record);
+			this.transitionTo('invoices.edit', record.id);
 		},
 
 		deleteInvoice(record) {

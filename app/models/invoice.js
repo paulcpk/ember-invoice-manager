@@ -4,7 +4,7 @@ import moment from 'moment';
 import ENV from '../config/environment';
 import { LokiJSModelMixin } from 'ember-lokijs';
 
-const { Model, attr } = DS;
+const { Model, attr, belongsTo } = DS;
 const { computed } = Ember;
 const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
@@ -43,9 +43,7 @@ export default Model.extend(ModelMixin, {
 	invoiceTerms: attr('string'),
 	personalData: attr('string'),
 	currency: attr('string'),
-	template: attr('string', {
-		defaultValue() { return 'default'; }
-	}),
+	template: belongsTo('template'),
 	isValidTaxRate: computed.gt('taxRate', 0),
 
 	invoiceItems: attr('', {

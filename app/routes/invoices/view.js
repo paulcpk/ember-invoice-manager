@@ -6,9 +6,9 @@ export default Ember.Route.extend({
     return this.get('store').findRecord('invoice', params.invoice_id);
   },
 
-  renderTemplate(controller, model) {
-    const template = model.get('template');
-    const path = `invoice-templates/${template}`;
-    this.render(path, {});
-  }
+  // renderTemplate(controller, model) {
+  //   const template = model.get('template');
+  //   const path = `invoice-templates/${template}`;
+  //   this.render(path, {});
+  // }
 });

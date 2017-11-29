@@ -10,14 +10,14 @@
             <div class="form-group">
               <label for="status">Template</label>
               {{#power-select
-                options=templateList
+                options=templates
                 searchEnabled=false
                 selected=model.template
                 onchange=(action (mut model.template))
                 class="invoice-template-select"
                 as |template|
               }}
-                {{titleize template}}
+                {{template.title}}
               {{/power-select}}
             </div>
           </div>
