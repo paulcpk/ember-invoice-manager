@@ -10,8 +10,6 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, hash) {
-    console.log(hash.templates);
-    console.log(hash.invoice);
     controller.set('invoice', hash.invoice);
     controller.set('templates', hash.templates);
   },

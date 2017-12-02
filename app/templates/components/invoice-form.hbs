@@ -11,9 +11,10 @@
               <label for="status">Template</label>
               {{#power-select
                 options=templates
+                placeholder="Please, select a template"
                 searchEnabled=false
-                selected=model.template
-                onchange=(action (mut model.template))
+                selected=(find-by 'id' model.templateId templates)
+                onchange=(action (mut model.templateId) value='id')
                 class="invoice-template-select"
                 as |template|
               }}

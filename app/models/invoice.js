@@ -43,7 +43,7 @@ export default Model.extend(ModelMixin, {
 	invoiceTerms: attr('string'),
 	personalData: attr('string'),
 	currency: attr('string'),
-	template: belongsTo('template'),
+	templateId: attr('string'),
 	isValidTaxRate: computed.gt('taxRate', 0),
 
 	invoiceItems: attr('', {

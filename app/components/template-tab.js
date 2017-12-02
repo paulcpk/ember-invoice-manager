@@ -13,12 +13,11 @@ export default Component.extend({
   init() {
     this._super(...arguments);
     this.get('templateListStatus').on('toggle', this, 'compareServiceValues');
-    this.send('toggleTab');
   },
   
   willDestroyElement() {
     this._super(...arguments);
-    this.get('templateListStatus').on('toggle', this, 'compareServiceValues');
+    this.get('templateListStatus').off('toggle', this, 'compareServiceValues');
   },
 
   compareServiceValues(index) {

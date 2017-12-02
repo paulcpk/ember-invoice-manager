@@ -12,10 +12,6 @@ export default Component.extend({
   newItemDescription: '',
   newItemAmount: '',
   isProcessing: false,
-
-  submit(e) {
-    console.log(e);
-  },
   
   actions: {
     uploadLogo(file) {
@@ -46,7 +42,7 @@ export default Component.extend({
       });
 
       const invoiceItems = model.get('invoiceItems').toArray().addObject(record);
-      return model.set('invoiceItems', invoiceItems);
+      model.set('invoiceItems', invoiceItems);
     },
 
     deleteItem(record) {
@@ -54,7 +50,7 @@ export default Component.extend({
       
       // remove target item from hasMany relationship
       const invoiceItems = model.get('invoiceItems').toArray().removeObject(record);
-      return model.set('invoiceItems', invoiceItems);
+      model.set('invoiceItems', invoiceItems);
     }
   }
 });
