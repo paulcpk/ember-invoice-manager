@@ -18,7 +18,9 @@
 
   .markup-container {
     textarea {
-      display: none;
+      height: 0;
+      opacity: 0;
+      width: 0;
     }
   }
 }
