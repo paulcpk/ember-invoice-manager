@@ -4,7 +4,7 @@ import moment from 'moment';
 import ENV from '../config/environment';
 import { LokiJSModelMixin } from 'ember-lokijs';
 
-const { Model, attr, belongsTo } = DS;
+const { Model, attr } = DS;
 const { computed } = Ember;
 const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
