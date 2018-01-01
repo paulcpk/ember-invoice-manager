@@ -21,7 +21,7 @@ export default Component.extend({
   },
 
   compareServiceValues(index) {
-    const isTarget = this.get('index') === index;
+    const isTarget = this.get('index') === index && this.get('isOpen') === false;
     this.set('isOpen', isTarget);
   },
 
