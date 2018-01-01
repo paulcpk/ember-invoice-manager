@@ -17,6 +17,12 @@ body {
   float: left;
   width: calc(100% - 240px);
   margin-left: 240px;
+
+  &.pdf-view {
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
 }
 
 .route-headline {

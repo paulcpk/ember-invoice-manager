@@ -1,7 +1,9 @@
 <div class="app-container container-fluid">
   <div class="row">
-    {{partial 'sidebar'}}
-    <main class="main-container">
+    {{#unless isPdfView}}
+      {{partial "sidebar"}}
+    {{/unless}}
+    <main class="main-container {{if isPdfView "pdf-view"}}">
       {{outlet}}
     </main>
   </div>

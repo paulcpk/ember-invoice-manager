@@ -16,6 +16,7 @@ export default Ember.Route.extend({
   },
 
   setupController(controller, hash) {
+    this.controllerFor('application').set('isPdfView', true);
     controller.set('invoice', hash.invoice);
     controller.set('template', hash.template);
   }
