@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = function(environment) {
-  const useDb = true;
+  const useDb = false;
   
   let ENV = {
     useDb,
@@ -68,6 +68,7 @@ module.exports = function(environment) {
   }
 
   ENV['ember-cli-mirage'] = {
+    directory: 'app/mirage',
     enabled: !ENV.useDb
   };
 

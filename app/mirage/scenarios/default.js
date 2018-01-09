@@ -7,5 +7,6 @@ export default function(server) {
   */
 
   server.createList('invoice', 30);
+  server.loadFixtures();
   
 }

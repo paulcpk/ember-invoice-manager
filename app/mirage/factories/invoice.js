@@ -29,5 +29,6 @@ export default Factory.extend({
 	currency: 'EUR',
 	invoiceItems() {
 		return generateInvoiceItems(Math.floor(Math.random() * 7) + 1);
-	}
+	},
+	templateId: 1
 });

@@ -16,6 +16,7 @@ export default function() {
 
   this.get('/templates');
   this.post('/templates');
+  this.get('/templates/:id');
   this.post('/templates/:id');
   this.patch('/templates/:id');
   this.del('/templates/:id');
