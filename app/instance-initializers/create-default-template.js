@@ -5,7 +5,7 @@ export function initialize(appInstance) {
   // Check if templates are available, if not create one
   store.findAll('template').then((templates) => {
     if (templates.length === 0) {
-      store.createRecord('template', defaultTemplate);
+      store.createRecord('template', defaultTemplate).save();
     }
   })
 }
