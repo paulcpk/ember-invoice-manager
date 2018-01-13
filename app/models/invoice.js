@@ -1,12 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import moment from 'moment';
-import ENV from '../config/environment';
-import { LokiJSModelMixin } from 'ember-lokijs';
+import ModelMixin from '../mixins/model/lokijs-model';
 
 const { Model, attr } = DS;
 const { computed } = Ember;
-const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
 export const templateList = Object.keys(window.requirejs.entries)
 															.filter((path) => path.includes('invoice-templates'))

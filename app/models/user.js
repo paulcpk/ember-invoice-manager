@@ -1,9 +1,7 @@
 import DS from 'ember-data';
-import { LokiJSModelMixin } from 'ember-lokijs';
-import ENV from '../config/environment';
+import ModelMixin from '../mixins/model/lokijs-model';
 
 const { Model, attr } = DS;
-const ModelMixin = ENV.useDb ? LokiJSModelMixin : {};
 
 export default Model.extend(ModelMixin, {
   logo: attr('string'),
