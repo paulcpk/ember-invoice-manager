@@ -2,7 +2,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="row">
-      <form class="invoice-settings col-xs-5">
+      <form class="invoice-settings col-sm-12 col-md-6">
         <div class="panel panel-default invoice-settings">
           <div class="panel-heading">
             <h3 class="panel-title"><i class="fa fa-gears"></i> Default Invoice Settings</h3>
@@ -85,9 +85,9 @@
             {{#if isProcessing}}      
               <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
             {{else}}
-              <button type="button" class="btn btn-success" {{action "saveUser" user}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+              <button type="button" class="btn btn-success" {{action (route-action "saveUser" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
             {{/if}}
-            <button type="button" class="btn btn-default" {{action "rollbackUser" user}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
+            <button type="button" class="btn btn-default" {{action (route-action "rollbackUser" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
           </div>
         </div>
       </form>

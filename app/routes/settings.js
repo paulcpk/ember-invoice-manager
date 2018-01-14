@@ -15,6 +15,19 @@ export default Ember.Route.extend({
       } else {
         return true;
       }
+    },
+
+    saveUser(record) {
+      this.controller.set('isProcessing', true);
+      record.save().then(() => {
+        Ember.run.later((() => {
+          this.controller.set('isProcessing', false);
+        }), 200);
+      });
+    },
+
+    rollbackUser(record) {
+      record.rollbackAttributes();
     }
   }
 });

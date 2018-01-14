@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Controller from '@ember/controller';
 
 export default Controller.extend({
@@ -8,7 +7,7 @@ export default Controller.extend({
     uploadLogo(file) {
       try {
         file.readAsDataURL().then((url) => {
-          this.get('user').set('logo', url);
+          this.get('model').set('logo', url);
         });
       } catch (e) {
         console.log(e);
@@ -16,20 +15,7 @@ export default Controller.extend({
     },
 
     deleteLogo() {
-      this.get('user').set('logo', null);
-    },
-
-    saveUser(record) {
-      this.set('isProcessing', true);
-      record.save().then(() => {
-        Ember.run.later((() => {
-          this.set('isProcessing', false);
-        }), 200);
-      });
-    },
-
-    rollbackUser(record) {
-      record.rollbackAttributes();
+      this.get('model').set('logo', null);
     }
   }
 });
