@@ -22,16 +22,13 @@ protocolServe({
 //     autoSubmit: true
 // });
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+function createWindow() {
 
-app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    minWidth: 800,
+    minHeight: 600
   });
 
   // If you want to open up dev tools programmatically, call
@@ -48,6 +45,40 @@ app.on('ready', () => {
     mainWindow.loadURL(emberAppLocation);
   });
 
+  mainWindow.on('closed', () => {
+    mainWindow = null;
+  });
+
+  app.on('window-all-closed', () => {
+    if (process.platform !== 'darwin') {
+      app.quit();
+    }
+  });
+
+  if (process.platform === 'win32') {
+    app.on('window-all-closed', function () {
+      app.quit();
+    });
+  } else {
+    mainWindow.on('close', function (e) {
+      e.preventDefault();
+
+      if (mainWindow.isFullScreen()) {
+        mainWindow.once('leave-full-screen', function () {
+          mainWindow.hide();
+        });
+        mainWindow.setFullScreen(false);
+      } else {
+        mainWindow.hide();
+      }
+
+    });
+
+    app.on('before-quit', function () {
+      mainWindow.removeAllListeners();
+    });
+  }
+
   mainWindow.webContents.on('crashed', () => {
     console.log('Your Ember app (or other code) in the main window has crashed.');
     console.log('This is a serious issue that needs to be handled and/or debugged.');
@@ -61,28 +92,26 @@ app.on('ready', () => {
     console.log('The main window has become responsive again.');
   });
 
-  mainWindow.on('closed', () => {
-    mainWindow = null;
+  process.on('uncaughtException', (err) => {
+    console.log('An exception in the main thread was not handled.');
+    console.log('This is a serious issue that needs to be handled and/or debugged.');
+    console.log(`Exception: ${err}`);
   });
+}
+
+app.on('ready', () => {
+  createWindow();
+  // updater.initialize(mainWindow);
+
+  if (mainWindow) {
+    // mainWindow.setTouchBar(touchBar.initialize());
+  }
 });
 
-// Handle an unhandled error in the main thread
-//
-// Note that 'uncaughtException' is a crude mechanism for exception handling intended to
-// be used only as a last resort. The event should not be used as an equivalent to
-// "On Error Resume Next". Unhandled exceptions inherently mean that an application is in
-// an undefined state. Attempting to resume application code without properly recovering
-// from the exception can cause additional unforeseen and unpredictable issues.
-//
-// Attempting to resume normally after an uncaught exception can be similar to pulling out
-// of the power cord when upgrading a computer -- nine out of ten times nothing happens -
-// but the 10th time, the system becomes corrupted.
-//
-// The correct use of 'uncaughtException' is to perform synchronous cleanup of allocated
-// resources (e.g. file descriptors, handles, etc) before shutting down the process. It is
-// not safe to resume normal operation after 'uncaughtException'.
-process.on('uncaughtException', (err) => {
-  console.log('An exception in the main thread was not handled.');
-  console.log('This is a serious issue that needs to be handled and/or debugged.');
-  console.log(`Exception: ${err}`);
+app.on('activate', () => {
+  if (mainWindow === null) {
+    return null;
+  } else {
+    mainWindow.show();
+  }
 });
