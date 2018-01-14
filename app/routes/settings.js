@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return this.get('store').findAll('user').then((user) => {
-        return user.get('length') ? user.get('firstObject') : this.get('store').createRecord('user', {});
-    });
+    return this.get('store').findAll('user').then(user => user.get('firstObject'));
   },
 
   actions: {
