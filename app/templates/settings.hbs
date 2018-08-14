@@ -85,9 +85,9 @@
             {{#if isProcessing}}      
               <button type="button" class="btn btn-success"><i class="fa fa-cog fa-spin fa-fw"></i> Saving...</button>
             {{else}}
-              <button type="button" class="btn btn-success" {{action (route-action "saveUser" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
+              <button type="button" class="btn btn-success save-button" {{action (route-action "saveUser" model)}}><i class="fa fa-floppy-o" aria-hidden="true"></i> Save</button>
             {{/if}}
-            <button type="button" class="btn btn-default" {{action (route-action "rollbackUser" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
+            <button type="button" class="btn btn-default reset-button" {{action (route-action "rollbackUser" model)}}><i class="fa fa-ban" aria-hidden="true"></i> Reset</button>
           </div>
         </div>
       </form>

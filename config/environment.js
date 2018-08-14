@@ -3,7 +3,7 @@
 
 module.exports = function(environment) {
   const useDb = false;
-  
+
   let ENV = {
     useDb,
     modulePrefix: 'ember-invoice-manager',
@@ -35,14 +35,14 @@ module.exports = function(environment) {
     emberHighlightJs: {
       style: 'monokai-sublime'
     },
- 
+
     // Set or update content security policies
     contentSecurityPolicy: {
       'font-src': "'self' fonts.gstatic.com",
       'style-src': "'self' fonts.googleapis.com"
     }
   };
-  
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -50,19 +50,19 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
-  
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
-    
+
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
-    
+
     ENV.APP.rootElement = '#ember-testing';
     ENV.useDb = false;
   }
-  
+
   if (environment === 'production') {
     ENV.useDb = true;
   }
