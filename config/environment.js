@@ -64,7 +64,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.useDb = true;
+    ENV.useDb = false;
   }
 
   ENV['ember-cli-mirage'] = {
